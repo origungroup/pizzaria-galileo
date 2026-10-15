@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terapia de Marca Galileo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap">
+<style>
+/* Layout: palco fixo 1920x1080 escalado à tela, grade de 12 colunas, contraste extremo de escala, tudo à esquerda (sistema da apresentação Passo Norte, só neutros). */
+:root{
+  --preto:#1A1A1A;
+  --branco:#FFFFFF;
+  --cinza-claro:#E4E4E4;
+  --cinza-medio:#B8B8B8;
+  --cinza-texto:#6E6E6E;
+  --font:'Inter Tight','Switzer','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --display:150px;
+  --titulo:80px;
+  --subtitulo:40px;
+  --corpo:20px;
+  --meta:13px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--preto);font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#palco{position:relative;width:1920px;height:1080px;flex:0 0 auto;transform-origin:center center}
+.slide{position:absolute;inset:0;padding:64px 80px 0;display:flex;flex-direction:column;overflow:hidden;color:var(--preto);background:var(--branco)}
+.slide[hidden]{display:none!important}
+.bg-preto{background:var(--preto);color:var(--branco)}
+.bg-branco{background:var(--branco)}
+.bg-claro{background:var(--cinza-claro)}
+.bg-medio{background:var(--cinza-medio)}
+
+h1,h2,h3,p{margin:0;font-weight:400}
+.meta{font-size:var(--meta);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza-texto)}
+.bg-preto .meta{color:var(--cinza-medio)}
+.titulo{font-size:var(--titulo);line-height:1.05;letter-spacing:-.015em;font-weight:400;max-width:1500px;text-wrap:balance}
+.titulo.caixa{text-transform:uppercase;font-weight:500;letter-spacing:-.01em}
+.sub{font-size:var(--subtitulo);line-height:1.22;letter-spacing:-.01em;max-width:1100px}
+.display{font-size:var(--display);line-height:.92;letter-spacing:-.03em;font-weight:500;text-transform:uppercase}
+.corpo{font-size:var(--corpo);line-height:1.5;max-width:46ch}
+.apagado{color:var(--cinza-texto)}
+.bg-preto .apagado{color:var(--cinza-medio)}
+
+.miolo{flex:1;display:flex;flex-direction:column;gap:56px;min-height:0;padding-bottom:120px}
+.topo{display:flex;flex-direction:column;gap:28px}
+.fim{margin-top:auto}
+
+.grade{display:grid;gap:0 24px;width:100%}
+.grade.dois{grid-template-columns:repeat(2,1fr)}
+.grade.tres{grid-template-columns:repeat(3,1fr)}
+.grade.cinco{grid-template-columns:repeat(5,1fr)}
+.item{border-top:1px solid var(--cinza-medio);padding:18px 0 34px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bg-preto .item{border-top-color:#3a3a3a}
+.item .num{font-size:var(--meta);font-weight:500;letter-spacing:.12em;color:var(--cinza-texto)}
+.bg-preto .item .num{color:var(--cinza-medio)}
+.item h3{font-size:28px;line-height:1.18;letter-spacing:-.01em;font-weight:500}
+.item p{font-size:var(--corpo);line-height:1.45;color:var(--cinza-texto);max-width:40ch}
+.bg-preto .item p{color:var(--cinza-medio)}
+
+.citacao h3{font-size:34px;line-height:1.2;font-weight:400;letter-spacing:-.012em}
+.numero{font-size:104px;line-height:.95;letter-spacing:-.03em;font-weight:500;font-variant-numeric:tabular-nums}
+
+.espelho{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;width:100%}
+.espelho > div{border-top:1px solid var(--cinza-medio);padding:16px 0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
+.espelho > div.cab{border-top:0;padding-bottom:8px}
+.espelho .it{color:var(--cinza-texto)}
+
+.andamentos{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
+.andamentos .item h3{font-size:140px;line-height:.9;letter-spacing:-.035em;text-transform:uppercase}
+.andamentos .fora h3{color:#9a9a9a}
+
+.relogio{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;align-items:start}
+.relogio svg{grid-column:1 / span 4;width:100%;max-width:440px;height:auto}
+.relogio .passos{grid-column:6 / span 7}
+.passos .grade{grid-template-columns:repeat(2,1fr)}
+
+.rodape{position:absolute;left:80px;right:80px;bottom:40px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end}
+.rodape .c{text-align:center}
+.rodape .d{text-align:right;font-variant-numeric:tabular-nums}
+
+#nav{position:fixed;right:max(16px, env(safe-area-inset-right, 0px));bottom:max(16px, env(safe-area-inset-bottom, 0px));display:flex;gap:8px;align-items:center;z-index:5}
+#nav button{width:40px;height:40px;border:1px solid #555;background:rgba(26,26,26,.85);color:#fff;font:500 16px var(--font);cursor:pointer}
+#nav button:hover{border-color:#fff}
+#nav button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#nav button:disabled{opacity:.3;cursor:default}
+#contador{font:500 12px var(--font);letter-spacing:.12em;color:#ddd;background:rgba(26,26,26,.85);padding:12px 12px;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+
+<div id="viewport"><div id="palco">
+
+<!-- 01 · Abertura · Tipo A -->
+<section class="slide bg-preto">
+  <div class="miolo">
+    <div class="topo">
+      <span class="meta">Galileo · 2026</span>
+      <h1 class="titulo caixa">Terapia de Marca</h1>
+      <p class="sub apagado">O que ouvimos de vocês, o que encontramos na pesquisa e para onde queremos levar a marca. Nada aqui está fechado. É material para conversarmos.</p>
+    </div>
+    <div class="grade tres fim">
+      <div class="item"><span class="num">01</span><h3>O que ouvimos</h3><p>As palavras de vocês e o que já combinamos.</p></div>
+      <div class="item"><span class="num">02</span><h3>O que encontramos</h3><p>Dados, a tensão que existe e os insights.</p></div>
+      <div class="item"><span class="num">03</span><h3>Para onde queremos ir</h3><p>O pensamento central e as ideias que nascem dele.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">01</span></div>
+</section>
+
+<!-- 02 · Palavras de vocês · Tipo D -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">01 · O que ouvimos</span><h2 class="titulo">Palavras de vocês na Terapia de Marca.</h2></div>
+    <div class="grade tres fim citacao">
+      <div class="item"><span class="num">Matheus</span><h3>“A qualidade da pizza. Foi o que me fez ser cliente.”</h3></div>
+      <div class="item"><span class="num">Daniel</span><h3>“No mínimo como está. Dali para cima.”</h3></div>
+      <div class="item"><span class="num">Matheus</span><h3>“Não quero silêncio, não. Não é do nosso perfil.”</h3></div>
+      <div class="item"><span class="num">Matheus</span><h3>“O mais importante não é só a comida. É estar ali com as pessoas.”</h3></div>
+      <div class="item"><span class="num">Daniel</span><h3>“Uma tranquilidade de espírito que a gente ainda não conseguiu passar.”</h3></div>
+      <div class="item"><span class="num">Matheus</span><h3>“Nem sei por quê, mas gostei tanto desse lugar.”</h3></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">02</span></div>
+</section>
+
+<!-- 03 · O que já combinamos · Tipo D -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">01 · O que ouvimos</span><h2 class="titulo">O que já está claro.</h2></div>
+    <div class="grade tres fim">
+      <div class="item"><span class="num">01</span><h3>A Galileo é a pizzaria.</h3><p>Eventos da hípica e cantina seguem separados, com comunicação própria.</p></div>
+      <div class="item"><span class="num">02</span><h3>Raiz italiana, jeito brasileiro.</h3><p>Longa fermentação com autoria daqui: camarão com pesto, quatro queijos com geleia de amora, Parma com búfala.</p></div>
+      <div class="item"><span class="num">03</span><h3>Para grupos de amigos e famílias.</h3><p>Classes B e A da zona de expansão. Crianças são bem-vindas, sem ser o foco da comunicação.</p></div>
+      <div class="item"><span class="num">04</span><h3>Leve, com energia. Alto padrão, sem etiqueta.</h3><p>Som ambiente e música ao vivo intimista, no espírito Tiny Desk. Nunca show.</p></div>
+      <div class="item"><span class="num">05</span><h3>Valores, nesta ordem.</h3><p>Autenticidade, conexão, leveza, acolhimento, excelência. A excelência vem por último porque é obrigação.</p></div>
+      <div class="item"><span class="num">06</span><h3>Futuras unidades, o mesmo estilo de vida.</h3><p>Sempre com natureza, verde e área externa.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">03</span></div>
+</section>
+
+<!-- 04 · Dados · Tipo D -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">02 · O que encontramos</span><h2 class="titulo">Nunca estivemos tão conectados. E nunca comemos tão separados.</h2></div>
+    <div class="grade tres fim">
+      <div class="item"><span class="numero">9h32</span><p>por dia no celular. O Brasil é o 2º país que mais passa tempo na tela.</p><span class="num">ElectronicsHub · 2023</span></div>
+      <div class="item"><span class="numero">30%</span><p>dos trabalhadores brasileiros têm sintomas de esgotamento. 2º lugar no mundo.</p><span class="num">ISMA</span></div>
+      <div class="item"><span class="numero">1 em 3</span><p>jantares de dia útil são feitos sozinhos. Quem come acompanhado com frequência se diz mais feliz.</p><span class="num">Universidade de Oxford · 2017</span></div>
+      <div class="item"><span class="numero">4.600</span><p>pessoas estudadas. Quem prioriza tempo em vez de dinheiro é mais feliz, em qualquer faixa de renda.</p><span class="num">Universidade da Colúmbia Britânica</span></div>
+      <div class="item"><span class="numero">+10%</span><p>é quanto as pessoas pagariam para estar na natureza ao pôr do sol. O horário desperta encantamento.</p><span class="num">Universidade de Exeter</span></div>
+      <div class="item"><span class="numero">Verde</span><p>A natureza restaura a atenção cansada sem pedir esforço. O olhar descansa no que encanta de leve.</p><span class="num">Teoria da Restauração da Atenção · Kaplan</span></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">04</span></div>
+</section>
+
+<!-- 05 · A tensão · Tipo C -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo">
+      <span class="meta">02 · A tensão</span>
+      <h2 class="titulo">Moramos na cidade vendida como a mais tranquila. E, mesmo aqui, esquecemos de viver isso.</h2>
+    </div>
+    <div class="fim" style="display:flex;flex-direction:column;gap:28px">
+      <p class="sub">Não é falta de tempo. Muitas vezes temos mais que outras capitais. É o que fazemos com ele: refeições separadas, celular na mesa, trânsito, a cabeça no trabalho, o verde cada vez mais longe.</p>
+      <p class="corpo apagado">Aracaju fica como pano de fundo da marca, nunca como porta de entrada.</p>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">05</span></div>
+</section>
+
+<!-- 06 · Insights · Tipo D -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">02 · Insights</span><h2 class="titulo">O que conecta esses dados à Galileo.</h2></div>
+    <div class="grade cinco fim">
+      <div class="item"><span class="num">01</span><h3>Temos tempo. Falta estar nele.</h3><p>O tempo livre virou tempo de tela. O que falta é presença.</p></div>
+      <div class="item"><span class="num">02</span><h3>Toda casa tem mesa. Poucas têm a hora de sentar juntos.</h3><p>A refeição se separou. O encontro em volta dela sumiu.</p></div>
+      <div class="item"><span class="num">03</span><h3>O que descansa é a companhia.</h3><p>O descanso vem de bons amigos, boa conversa e memória sendo criada.</p></div>
+      <div class="item"><span class="num">04</span><h3>O que mais vale não se compra.</h3><p>Tempo de qualidade e memórias. A marca não diz a palavra luxo. O cliente percebe.</p></div>
+      <div class="item"><span class="num">05</span><h3>A calma começa em quem recebe.</h3><p>A equipe vive esse espírito. O cliente sente a energia antes do sabor.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">06</span></div>
+</section>
+
+<!-- 07 · Território · Tipo C -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · O território</span><h2 class="titulo">A marca fala de tempo.<br><span class="apagado">O descanso vem junto.</span></h2></div>
+    <div class="grade tres fim">
+      <div class="item"><span class="num">A pizza</span><h3>Excelente para servir a algo maior.</h3><p>Até conhecerem a marca, ela é o destino. Depois, é o que reúne as pessoas.</p></div>
+      <div class="item"><span class="num">A natureza</span><h3>Faz a sua parte.</h3><p>O vento, a brisa, o pôr do sol e os cavalos ajudam a desacelerar sem pedir nada.</p></div>
+      <div class="item"><span class="num">A memória</span><h3>É o que fica.</h3><p>O tempo à mesa não é perdido. É investido, em si e nos outros.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">07</span></div>
+</section>
+
+<!-- 08 · Pensamento central · Tipo A -->
+<section class="slide bg-preto" hidden>
+  <div class="miolo">
+    <span class="meta">03 · O pensamento central</span>
+    <h2 class="display">Ao redor da mesa,<br>ninguém envelhece.</h2>
+    <div class="fim" style="display:flex;flex-direction:column;gap:20px">
+      <p class="sub apagado">A tavola non s'invecchia.</p>
+      <p class="corpo apagado">Tudo o que a marca disser vai existir para explicar, completar e dar sentido a esta frase.</p>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">08</span></div>
+</section>
+
+<!-- 09 · Origem do provérbio · Tipo C -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · De onde vem</span><h2 class="titulo">Um provérbio italiano que o Brasil também entende.</h2></div>
+    <div class="grade dois fim">
+      <div class="item"><span class="num">A tavola non s'invecchia</span><p class="sub" style="color:var(--preto)">Em séculos passados, era um aviso contra os excessos. Com o tempo, virou celebração: quem fica à mesa com quem gosta esquece o relógio.</p></div>
+      <div class="item"><span class="num">A tavola si diventa giovane · Toscana</span><p class="sub" style="color:var(--preto)">À mesa, a gente fica mais jovem. O tempo ali não se conta em minutos. Vira memória, e memória não envelhece.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">09</span></div>
+</section>
+
+<!-- 10 · Relógio parado · Tipo D -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · O gesto</span><h2 class="titulo">Um relógio parado na mesa.</h2></div>
+    <div class="relogio fim">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Relógio parado">
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+        <g stroke="#B8B8B8" stroke-width="1.5">
+          <line x1="100" y1="10" x2="100" y2="22"/><line x1="190" y1="100" x2="178" y2="100"/>
+          <line x1="100" y1="190" x2="100" y2="178"/><line x1="10" y1="100" x2="22" y2="100"/>
+        </g>
+        <line x1="100" y1="100" x2="100" y2="52" stroke="#1A1A1A" stroke-width="3" transform="rotate(195 100 100)"/>
+        <line x1="100" y1="100" x2="100" y2="30" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(180 100 100)"/>
+        <circle cx="100" cy="100" r="3.5" fill="#1A1A1A"/>
+      </svg>
+      <div class="passos">
+        <div class="grade">
+          <div class="item"><span class="num">01</span><h3>O cliente chega.</h3><p>O atendente coloca um pequeno relógio na mesa.</p></div>
+          <div class="item"><span class="num">02</span><h3>Marca a hora da chegada.</h3><p>E os ponteiros ficam ali, parados.</p></div>
+          <div class="item"><span class="num">03</span><h3>Alguém pergunta.</h3><p>“Esse relógio está quebrado?”</p></div>
+          <div class="item"><span class="num">04</span><h3>A resposta.</h3><p>“Não. É que ao redor da nossa mesa ninguém envelhece.”</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">10</span></div>
+</section>
+
+<!-- 11 · Raízes · Tipo D -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · As raízes</span><h2 class="titulo">Uma receita italiana que chegou de passagem e decidiu ficar.</h2></div>
+    <div class="espelho fim">
+      <div class="cab meta">Itália</div><div class="cab meta">Nordeste</div>
+      <div class="it">Os butteri da Maremma, vaqueiros a cavalo</div><div>Os vaqueiros do sertão</div>
+      <div class="it">O cuscusu de Trapani, cozido no vapor</div><div>O cuscuz da cuscuzeira</div>
+      <div class="it">Cadeiras na porta, no fim do dia</div><div>Cadeiras na calçada</div>
+      <div class="it">A passeggiata ao entardecer</div><div>A volta na orla</div>
+      <div class="it">A controra, o tempo suspenso da tarde</div><div>O cochilo depois do almoço</div>
+      <div class="it">Chi va piano va sano e va lontano</div><div>Devagar se vai ao longe</div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">11</span></div>
+</section>
+
+<!-- 12 · O cavalo · Tipo B -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · O cavalo</span><h2 class="titulo">O animal que mais caminhou ao lado do homem sabe mudar de ritmo.</h2></div>
+    <div class="andamentos fim">
+      <div class="item"><h3>Passo</h3><p>O ritmo de quem chegou. O único em que cavalo e cavaleiro conversam.</p></div>
+      <div class="item fora"><h3>Trote</h3><p>O ritmo da rotina, do dia a dia.</p></div>
+      <div class="item fora"><h3>Galope</h3><p>O ritmo da semana. Necessário, mas não para sempre.</p></div>
+    </div>
+    <p class="corpo apagado" style="max-width:70ch">A vida pede os três. O que andamos esquecendo é o passo. O cavalo entra nas ilustrações, na identidade e em assinaturas do símbolo.</p>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">12</span></div>
+</section>
+
+<!-- 13 · Rede social · Tipo C -->
+<section class="slide bg-medio" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta" style="color:#4a4a4a">03 · Vertente visual</span><h2 class="titulo caixa">A mais antiga das redes sociais.</h2></div>
+    <div class="fim" style="display:flex;flex-direction:column;gap:28px">
+      <p class="sub">Muito antes do feed, já existiam a calçada, a varanda e a mesa. A conexão que o celular promete, a mesa sempre entregou.</p>
+      <p class="corpo" style="color:#4a4a4a">Linha visual em criação, a partir de uma expressão do cronista Xico Sá sobre a conversa na calçada nordestina.</p>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta" style="color:#4a4a4a">Origun</span><span class="meta c" style="color:#4a4a4a">Terapia de Marca</span><span class="meta d" style="color:#4a4a4a">13</span></div>
+</section>
+
+<!-- 14 · Persona · Tipo C -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · Persona · Em construção</span><h2 class="titulo">Quem fala pela marca.</h2></div>
+    <div class="fim" style="display:flex;flex-direction:column;gap:28px">
+      <p class="sub">Uma mulher italiana e nordestina. Aprendeu a massa com o pai, o molho com a mãe, e servia os irmãos à mesa. Chegou a Aracaju, reconheceu um pouco da Itália por aqui e se apaixonou pelo resto.</p>
+      <p class="corpo apagado" style="max-width:70ch">Aprendeu os hábitos daqui sem perder os princípios de lá. Ela é a voz da marca: leve, calorosa, cheia de analogias entre os dois mundos. Nome, história e jeito de falar ainda vamos construir juntos.</p>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">14</span></div>
+</section>
+
+<!-- 15 · Frases · Tipo D -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · Frases que completam o pensamento · Rascunho</span><h2 class="titulo">Toda frase da marca responde à mesma ideia.</h2></div>
+    <div class="grade dois fim citacao">
+      <div class="item"><span class="num">O relógio parado</span><h3>Não está quebrado. Ao redor da nossa mesa, ninguém envelhece.</h3></div>
+      <div class="item"><span class="num">Sobre memória</span><h3>Tem tempo que passa. E tem tempo que fica.</h3></div>
+      <div class="item"><span class="num">Sobre o cavalo</span><h3>Lá fora, a vida anda a galope. Aqui, a gente vai a passo.</h3></div>
+      <div class="item"><span class="num">Sobre a origem</span><h3>Uma receita italiana que chegou de passagem e decidiu ficar.</h3></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">15</span></div>
+</section>
+
+<!-- 16 · Próximos passos · Tipo D -->
+<section class="slide bg-branco" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">03 · Próximos passos</span><h2 class="titulo">O que ainda vamos definir.</h2></div>
+    <div class="grade cinco fim">
+      <div class="item"><span class="num">01</span><h3>Brand Idea e manifesto</h3><p>O texto que explica a marca inteira a partir do pensamento central.</p></div>
+      <div class="item"><span class="num">02</span><h3>Nome</h3><p>Galileo é o nome oficial. Um possível renaming será estudado, e a decisão é de vocês.</p></div>
+      <div class="item"><span class="num">03</span><h3>Persona</h3><p>Nome, história e voz.</p></div>
+      <div class="item"><span class="num">04</span><h3>Território de palavras</h3><p>As palavras que são da Galileo e as que ela nunca usa.</p></div>
+      <div class="item"><span class="num">05</span><h3>Identidade visual</h3><p>O cavalo, a mesa, a natureza, os materiais rústicos.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">16</span></div>
+</section>
+
+<!-- 17 · Perguntas · Tipo C -->
+<section class="slide bg-claro" hidden>
+  <div class="miolo">
+    <div class="topo"><span class="meta">Para vocês</span><h2 class="titulo">O que vocês sentiram?</h2></div>
+    <div class="grade cinco fim">
+      <div class="item"><span class="num">01</span><h3>O que nessa direção soa como vocês?</h3></div>
+      <div class="item"><span class="num">02</span><h3>O que soa como outra marca?</h3></div>
+      <div class="item"><span class="num">03</span><h3>O relógio parado cabe na rotina do salão?</h3></div>
+      <div class="item"><span class="num">04</span><h3>A persona faz sentido para vocês?</h3></div>
+      <div class="item"><span class="num">05</span><h3>Que história de vocês à mesa precisa estar aqui?</h3></div>
+    </div>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">17</span></div>
+</section>
+
+<!-- 18 · Fechamento · Tipo A -->
+<section class="slide bg-preto" hidden>
+  <div class="miolo">
+    <span class="meta">Galileo</span>
+    <h2 class="display">Ao redor da mesa,<br>ninguém envelhece.</h2>
+  </div>
+  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">18</span></div>
+</section>
+
+</div></div>
+
+<div id="nav">
+  <button id="prev" aria-label="Slide anterior">←</button>
+  <span id="contador">01 / 18</span>
+  <button id="next" aria-label="Próximo slide">→</button>
+</div>
+
+<script>
+(function(){
+  var palco=document.getElementById('palco');
+  function fit(){var s=Math.min(window.innerWidth/1920,window.innerHeight/1080);palco.style.transform='scale('+s+')'}
+  window.addEventListener('resize',fit);fit();
+  var slides=[].slice.call(document.querySelectorAll('.slide')),n=slides.length,i=0;
+  var cont=document.getElementById('contador'),prev=document.getElementById('prev'),next=document.getElementById('next');
+  function pad(x){return (x<10?'0':'')+x}
+  function show(k){
+    i=Math.max(0,Math.min(n-1,k));
+    slides.forEach(function(s,j){s.hidden=j!==i});
+    cont.textContent=pad(i+1)+' / '+pad(n);
+    prev.disabled=i===0;next.disabled=i===n-1;
+    try{history.replaceState(null,'','#s'+(i+1))}catch(e){}
+  }
+  prev.addEventListener('click',function(){show(i-1)});
+  next.addEventListener('click',function(){show(i+1)});
+  document.getElementById('viewport').addEventListener('click',function(e){
+    var x=e.clientX/window.innerWidth; if(x>0.6)show(i+1); else if(x<0.4)show(i-1);
+  });
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1)}
+    else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1)}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(n-1);
+  });
+  var x0=null,y0=null,vp=document.getElementById('viewport');
+  vp.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+  vp.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(dx<0?i+1:i-1);x0=null},{passive:true});
+  var m=/^#s(\d+)$/.exec(location.hash||'');show(m?parseInt(m[1],10)-1:0);
+})();
+</script>
+</body>
+</html>
