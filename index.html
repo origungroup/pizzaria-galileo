@@ -3,24 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Terapia de Marca Galileo</title>
+<title>Galileo Expressão Verbal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap">
 <style>
-/* Layout: palco fixo 1920x1080 escalado à tela, grade de 12 colunas, contraste extremo de escala, tudo à esquerda (sistema da apresentação Passo Norte, só neutros). */
+/* Palco 1920x1080 escalado, grade de 12 colunas, tudo à esquerda. Branco nas telas comuns, bordô nas aberturas de capítulo. */
 :root{
-  --preto:#1A1A1A;
-  --branco:#FFFFFF;
-  --cinza-claro:#E4E4E4;
-  --cinza-medio:#B8B8B8;
-  --cinza-texto:#6E6E6E;
-  --font:'Inter Tight','Switzer','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-  --display:150px;
-  --titulo:80px;
-  --subtitulo:40px;
-  --corpo:20px;
-  --meta:13px;
+  --preto:#1A1A1A; --branco:#FFFFFF; --cinza-claro:#E4E4E4; --cinza-medio:#B8B8B8; --cinza-texto:#6E6E6E;
+  --bordo:#5C1A27;
+  --font:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -31,54 +23,115 @@ body{background:var(--preto);font-family:var(--font);overflow:hidden;-webkit-fon
 #palco{position:relative;width:1920px;height:1080px;flex:0 0 auto;transform-origin:center center}
 .slide{position:absolute;inset:0;padding:64px 80px 0;display:flex;flex-direction:column;overflow:hidden;color:var(--preto);background:var(--branco)}
 .slide[hidden]{display:none!important}
-.bg-preto{background:var(--preto);color:var(--branco)}
-.bg-branco{background:var(--branco)}
-.bg-claro{background:var(--cinza-claro)}
-.bg-medio{background:var(--cinza-medio)}
-
-h1,h2,h3,p{margin:0;font-weight:400}
-.meta{font-size:var(--meta);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza-texto)}
-.bg-preto .meta{color:var(--cinza-medio)}
-.titulo{font-size:var(--titulo);line-height:1.05;letter-spacing:-.015em;font-weight:400;max-width:1500px;text-wrap:balance}
-.titulo.caixa{text-transform:uppercase;font-weight:500;letter-spacing:-.01em}
-.sub{font-size:var(--subtitulo);line-height:1.22;letter-spacing:-.01em;max-width:1100px}
-.display{font-size:var(--display);line-height:.92;letter-spacing:-.03em;font-weight:500;text-transform:uppercase}
-.corpo{font-size:var(--corpo);line-height:1.5;max-width:46ch}
-.apagado{color:var(--cinza-texto)}
-.bg-preto .apagado{color:var(--cinza-medio)}
-
-.miolo{flex:1;display:flex;flex-direction:column;gap:56px;min-height:0;padding-bottom:120px}
-.topo{display:flex;flex-direction:column;gap:28px}
+.bg-bordo{background:var(--bordo);color:var(--branco)}
+h1,h2,h3,h4,p,ul{margin:0;font-weight:400}
+.miolo{flex:1;display:flex;flex-direction:column;gap:44px;min-height:0;padding-bottom:110px}
+.topo{display:flex;flex-direction:column;gap:22px}
 .fim{margin-top:auto}
+.meta{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza-texto)}
+.bg-bordo .meta{color:rgba(255,255,255,.65)}
+.titulo{font-size:66px;line-height:1.06;letter-spacing:-.015em;max-width:1600px;text-wrap:balance}
+.titulo.caixa{text-transform:uppercase;font-weight:500}
+.display{font-size:132px;line-height:.95;letter-spacing:-.03em;font-weight:500}
+.sub{font-size:36px;line-height:1.25;letter-spacing:-.01em;max-width:1300px}
+.corpo{font-size:21px;line-height:1.5;max-width:62ch}
+.apagado{color:var(--cinza-texto)}
+.bg-bordo .apagado{color:rgba(255,255,255,.7)}
+.colunas{display:grid;grid-template-columns:1fr 1fr;gap:24px 64px;align-items:start}
+.colunas > div{display:flex;flex-direction:column;gap:24px}
+.colunas .sub{font-size:38px}
 
-.grade{display:grid;gap:0 24px;width:100%}
+.grade{display:grid;gap:0 32px;width:100%}
 .grade.dois{grid-template-columns:repeat(2,1fr)}
 .grade.tres{grid-template-columns:repeat(3,1fr)}
+.grade.quatro{grid-template-columns:repeat(4,1fr)}
 .grade.cinco{grid-template-columns:repeat(5,1fr)}
-.item{border-top:1px solid var(--cinza-medio);padding:18px 0 34px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.bg-preto .item{border-top-color:#3a3a3a}
-.item .num{font-size:var(--meta);font-weight:500;letter-spacing:.12em;color:var(--cinza-texto)}
-.bg-preto .item .num{color:var(--cinza-medio)}
-.item h3{font-size:28px;line-height:1.18;letter-spacing:-.01em;font-weight:500}
-.item p{font-size:var(--corpo);line-height:1.45;color:var(--cinza-texto);max-width:40ch}
-.bg-preto .item p{color:var(--cinza-medio)}
+.item{border-top:1px solid var(--cinza-medio);padding:18px 0 28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bg-bordo .item{border-top-color:rgba(255,255,255,.35)}
+.item .num{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--bordo)}
+.bg-bordo .item .num{color:rgba(255,255,255,.7)}
+.item h3{font-size:27px;line-height:1.2;letter-spacing:-.01em;font-weight:500}
+.item p{font-size:19px;line-height:1.48;color:#3d3d3d}
+.bg-bordo .item p{color:rgba(255,255,255,.9);font-size:21px}
+.grade.grande .item p{font-size:24px}
+.citacao .item h3{font-size:32px;font-weight:400;line-height:1.22}
+.dados .item h3{font-size:84px;line-height:1;letter-spacing:-.03em;color:var(--bordo)}
+.naoe{font-weight:600;color:var(--bordo)}
+.sim{font-weight:600;color:var(--preto)}
 
-.citacao h3{font-size:34px;line-height:1.2;font-weight:400;letter-spacing:-.012em}
-.numero{font-size:104px;line-height:.95;letter-spacing:-.03em;font-weight:500;font-variant-numeric:tabular-nums}
+.manifesto{display:flex;flex-direction:column;gap:22px;max-width:1500px}
+.manifesto p{font-size:33px;line-height:1.33;letter-spacing:-.01em}
+.manifesto .assin{font-weight:600;color:var(--bordo);margin-top:12px}
 
-.espelho{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;width:100%}
-.espelho > div{border-top:1px solid var(--cinza-medio);padding:16px 0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
-.espelho > div.cab{border-top:0;padding-bottom:8px}
-.espelho .it{color:var(--cinza-texto)}
+.frases{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.frases li{font-size:21px;line-height:1.38;padding-left:22px;position:relative}
+.frases li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:1px;background:var(--bordo)}
 
-.andamentos{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
-.andamentos .item h3{font-size:140px;line-height:.9;letter-spacing:-.035em;text-transform:uppercase}
-.andamentos .fora h3{color:#9a9a9a}
+.persona-miolo{gap:20px}
+.persona{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:22px;min-height:0;padding-bottom:0}
+.pcol{grid-row:1 / span 2;border:1.5px solid var(--preto);display:flex;flex-direction:column}
+.foto{margin:18px;flex:0 0 300px;background:var(--cinza-claro);display:flex;align-items:center;justify-content:center}
+.pcampo{border-top:1.5px solid var(--preto);padding:16px 22px;display:flex;flex-direction:column;gap:4px}
+.pcampo:last-child{flex:1}
+.pl{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--bordo)}
+.pv{font-size:24px;line-height:1.25}
+.pv.grande{font-size:30px}
+.pbox{border:1.5px solid var(--preto);display:flex;flex-direction:column;min-height:0}
+.pbox h4{font-size:24px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:18px 12px;border-bottom:1.5px solid var(--preto)}
+.pbox p{font-size:19px;line-height:1.5;text-align:center;padding:18px 22px;color:#2a2a2a}
+.pbox.cen{grid-column:3 / span 2}
+.pbox.cen p{font-size:20px}
 
-.relogio{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;align-items:start}
-.relogio svg{grid-column:1 / span 4;width:100%;max-width:440px;height:auto}
-.relogio .passos{grid-column:6 / span 7}
-.passos .grade{grid-template-columns:repeat(2,1fr)}
+
+.titulo.menor{font-size:38px;max-width:1500px}
+.topicos .item .nome{font-size:56px;font-weight:500;letter-spacing:-.025em;line-height:1;color:var(--bordo)}
+.topicos .item h3{font-size:24px}
+.topicos.cinco .item .nome{font-size:42px}
+.topicos.cinco .item p{font-size:19px}
+.manifesto.duas{display:grid;grid-template-columns:1fr 1fr;gap:0 80px;max-width:none}
+.manifesto.duas > div{display:flex;flex-direction:column;gap:20px}
+.manifesto.duas p{font-size:24.5px;line-height:1.42}
+.trad{color:var(--cinza-texto);font-weight:400}
+.bg-bordo .trad{color:rgba(255,255,255,.7)}
+/* manual */
+.slide.manual{padding:0;flex-direction:row}
+.manual .lado{width:620px;flex:0 0 620px;background:var(--bordo);color:#fff;padding:64px 56px 110px;display:flex;flex-direction:column;gap:26px}
+.manual .lado .meta{color:rgba(255,255,255,.7)}
+.manual .lado h2{font-size:58px;line-height:1.02;font-weight:500;letter-spacing:-.02em}
+.manual .lado .oque{font-size:22px;line-height:1.45}
+.manual .lado .rot{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);border-top:1px solid rgba(255,255,255,.35);padding-top:16px}
+.manual .lado .porque{font-size:19px;line-height:1.5;color:rgba(255,255,255,.92)}
+.fase{align-self:flex-start;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:#fff;color:var(--bordo);padding:7px 12px}
+.manual .conteudo{flex:1;min-width:0;padding:64px 80px 110px 72px;display:flex;flex-direction:column;gap:34px}
+.manual .rotulo{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bordo)}
+.passos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;counter-reset:p}
+.passos li{counter-increment:p;display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:baseline;border-top:1px solid var(--cinza-medio);padding:18px 0;font-size:23px;line-height:1.42}
+.passos li::before{content:counter(p,decimal-leading-zero);font-size:30px;font-weight:500;color:var(--bordo);letter-spacing:-.02em}
+.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;margin-top:auto}
+.infos > div{border-top:2px solid var(--preto);padding-top:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.infos p{font-size:18.5px;line-height:1.45;color:#2a2a2a}
+.manual .rodape{left:692px}
+.estrutura{display:grid;grid-template-columns:repeat(6,1fr);gap:0 20px}
+.estrutura > div{border-top:2px solid var(--bordo);padding-top:14px;display:flex;flex-direction:column;gap:8px}
+.estrutura h3{font-size:26px;font-weight:500;color:var(--bordo)}
+.estrutura p{font-size:18px;line-height:1.45;color:#3d3d3d}
+.fases{display:grid;grid-template-columns:repeat(3,1fr);gap:0 32px}
+.fases > div{border-top:2px solid var(--bordo);padding-top:16px;display:flex;flex-direction:column;gap:12px}
+.fases h3{font-size:36px;font-weight:500;color:var(--bordo);letter-spacing:-.02em}
+.fases p{font-size:19px;line-height:1.5;color:#2a2a2a}
+
+
+.slide.divisor{background:var(--branco);border-top:20px solid var(--bordo)}
+.div-topo{display:flex;justify-content:space-between;align-items:flex-start}
+.div-num{font-size:220px;line-height:.8;font-weight:500;color:var(--cinza-claro);letter-spacing:-.04em}
+.div-nome{font-size:150px;line-height:.95;font-weight:500;letter-spacing:-.03em;color:var(--bordo);margin-top:-60px}
+.div-grade{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 40px}
+.div-grade > div{border-top:2px solid var(--bordo);padding-top:16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.div-grade p{font-size:22px;line-height:1.5}
+.div-grade ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.div-grade li{font-size:24px;font-weight:500}
+.div-grade li::before{content:"· ";color:var(--bordo)}
+.divisor .rotulo{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bordo)}
 
 .rodape{position:absolute;left:80px;right:80px;bottom:40px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end}
 .rodape .c{text-align:center}
@@ -89,315 +142,462 @@ h1,h2,h3,p{margin:0;font-weight:400}
 #nav button:hover{border-color:#fff}
 #nav button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 #nav button:disabled{opacity:.3;cursor:default}
-#contador{font:500 12px var(--font);letter-spacing:.12em;color:#ddd;background:rgba(26,26,26,.85);padding:12px 12px;font-variant-numeric:tabular-nums}
+#contador{font:500 12px var(--font);letter-spacing:.12em;color:#ddd;background:rgba(26,26,26,.85);padding:12px;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
-
 <div id="viewport"><div id="palco">
-
-<!-- 01 · Abertura · Tipo A -->
-<section class="slide bg-preto">
-  <div class="miolo">
-    <div class="topo">
-      <span class="meta">Galileo · 2026</span>
-      <h1 class="titulo caixa">Terapia de Marca</h1>
-      <p class="sub apagado">O que ouvimos de vocês, o que encontramos na pesquisa e para onde queremos levar a marca. Nada aqui está fechado. É material para conversarmos.</p>
-    </div>
-    <div class="grade tres fim">
-      <div class="item"><span class="num">01</span><h3>O que ouvimos</h3><p>As palavras de vocês e o que já combinamos.</p></div>
-      <div class="item"><span class="num">02</span><h3>O que encontramos</h3><p>Dados, a tensão que existe e os insights.</p></div>
-      <div class="item"><span class="num">03</span><h3>Para onde queremos ir</h3><p>O pensamento central e as ideias que nascem dele.</p></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">01</span></div>
-</section>
-
-<!-- 02 · Palavras de vocês · Tipo D -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">01 · O que ouvimos</span><h2 class="titulo">Palavras de vocês na Terapia de Marca.</h2></div>
-    <div class="grade tres fim citacao">
-      <div class="item"><span class="num">Matheus</span><h3>“A qualidade da pizza. Foi o que me fez ser cliente.”</h3></div>
-      <div class="item"><span class="num">Daniel</span><h3>“No mínimo como está. Dali para cima.”</h3></div>
-      <div class="item"><span class="num">Matheus</span><h3>“Não quero silêncio, não. Não é do nosso perfil.”</h3></div>
-      <div class="item"><span class="num">Matheus</span><h3>“O mais importante não é só a comida. É estar ali com as pessoas.”</h3></div>
-      <div class="item"><span class="num">Daniel</span><h3>“Uma tranquilidade de espírito que a gente ainda não conseguiu passar.”</h3></div>
-      <div class="item"><span class="num">Matheus</span><h3>“Nem sei por quê, mas gostei tanto desse lugar.”</h3></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">02</span></div>
-</section>
-
-<!-- 03 · O que já combinamos · Tipo D -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">01 · O que ouvimos</span><h2 class="titulo">O que já está claro.</h2></div>
-    <div class="grade tres fim">
-      <div class="item"><span class="num">01</span><h3>A Galileo é a pizzaria.</h3><p>Eventos da hípica e cantina seguem separados, com comunicação própria.</p></div>
-      <div class="item"><span class="num">02</span><h3>Raiz italiana, jeito brasileiro.</h3><p>Longa fermentação com autoria daqui: camarão com pesto, quatro queijos com geleia de amora, Parma com búfala.</p></div>
-      <div class="item"><span class="num">03</span><h3>Para grupos de amigos e famílias.</h3><p>Classes B e A da zona de expansão. Crianças são bem-vindas, sem ser o foco da comunicação.</p></div>
-      <div class="item"><span class="num">04</span><h3>Leve, com energia. Alto padrão, sem etiqueta.</h3><p>Som ambiente e música ao vivo intimista, no espírito Tiny Desk. Nunca show.</p></div>
-      <div class="item"><span class="num">05</span><h3>Valores, nesta ordem.</h3><p>Autenticidade, conexão, leveza, acolhimento, excelência. A excelência vem por último porque é obrigação.</p></div>
-      <div class="item"><span class="num">06</span><h3>Futuras unidades, o mesmo estilo de vida.</h3><p>Sempre com natureza, verde e área externa.</p></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">03</span></div>
-</section>
-
-<!-- 04 · Dados · Tipo D -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">02 · O que encontramos</span><h2 class="titulo">Nunca estivemos tão conectados. E nunca comemos tão separados.</h2></div>
-    <div class="grade tres fim">
-      <div class="item"><span class="numero">9h32</span><p>por dia no celular. O Brasil é o 2º país que mais passa tempo na tela.</p><span class="num">ElectronicsHub · 2023</span></div>
-      <div class="item"><span class="numero">30%</span><p>dos trabalhadores brasileiros têm sintomas de esgotamento. 2º lugar no mundo.</p><span class="num">ISMA</span></div>
-      <div class="item"><span class="numero">1 em 3</span><p>jantares de dia útil são feitos sozinhos. Quem come acompanhado com frequência se diz mais feliz.</p><span class="num">Universidade de Oxford · 2017</span></div>
-      <div class="item"><span class="numero">4.600</span><p>pessoas estudadas. Quem prioriza tempo em vez de dinheiro é mais feliz, em qualquer faixa de renda.</p><span class="num">Universidade da Colúmbia Britânica</span></div>
-      <div class="item"><span class="numero">+10%</span><p>é quanto as pessoas pagariam para estar na natureza ao pôr do sol. O horário desperta encantamento.</p><span class="num">Universidade de Exeter</span></div>
-      <div class="item"><span class="numero">Verde</span><p>A natureza restaura a atenção cansada sem pedir esforço. O olhar descansa no que encanta de leve.</p><span class="num">Teoria da Restauração da Atenção · Kaplan</span></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">04</span></div>
-</section>
-
-<!-- 05 · A tensão · Tipo C -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo">
-      <span class="meta">02 · A tensão</span>
-      <h2 class="titulo">Moramos na cidade vendida como a mais tranquila. E, mesmo aqui, esquecemos de viver isso.</h2>
-    </div>
-    <div class="fim" style="display:flex;flex-direction:column;gap:28px">
-      <p class="sub">Não é falta de tempo. Muitas vezes temos mais que outras capitais. É o que fazemos com ele: refeições separadas, celular na mesa, trânsito, a cabeça no trabalho, o verde cada vez mais longe.</p>
-      <p class="corpo apagado">Aracaju fica como pano de fundo da marca, nunca como porta de entrada.</p>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">05</span></div>
-</section>
-
-<!-- 06 · Insights · Tipo D -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">02 · Insights</span><h2 class="titulo">O que conecta esses dados à Galileo.</h2></div>
-    <div class="grade cinco fim">
-      <div class="item"><span class="num">01</span><h3>Temos tempo. Falta estar nele.</h3><p>O tempo livre virou tempo de tela. O que falta é presença.</p></div>
-      <div class="item"><span class="num">02</span><h3>Toda casa tem mesa. Poucas têm a hora de sentar juntos.</h3><p>A refeição se separou. O encontro em volta dela sumiu.</p></div>
-      <div class="item"><span class="num">03</span><h3>O que descansa é a companhia.</h3><p>O descanso vem de bons amigos, boa conversa e memória sendo criada.</p></div>
-      <div class="item"><span class="num">04</span><h3>O que mais vale não se compra.</h3><p>Tempo de qualidade e memórias. A marca não diz a palavra luxo. O cliente percebe.</p></div>
-      <div class="item"><span class="num">05</span><h3>A calma começa em quem recebe.</h3><p>A equipe vive esse espírito. O cliente sente a energia antes do sabor.</p></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">06</span></div>
-</section>
-
-<!-- 07 · Território · Tipo C -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · O território</span><h2 class="titulo">A marca fala de tempo.<br><span class="apagado">O descanso vem junto.</span></h2></div>
-    <div class="grade tres fim">
-      <div class="item"><span class="num">A pizza</span><h3>Excelente para servir a algo maior.</h3><p>Até conhecerem a marca, ela é o destino. Depois, é o que reúne as pessoas.</p></div>
-      <div class="item"><span class="num">A natureza</span><h3>Faz a sua parte.</h3><p>O vento, a brisa, o pôr do sol e os cavalos ajudam a desacelerar sem pedir nada.</p></div>
-      <div class="item"><span class="num">A memória</span><h3>É o que fica.</h3><p>O tempo à mesa não é perdido. É investido, em si e nos outros.</p></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">07</span></div>
-</section>
-
-<!-- 08 · Pensamento central · Tipo A -->
-<section class="slide bg-preto" hidden>
-  <div class="miolo">
-    <span class="meta">03 · O pensamento central</span>
-    <h2 class="display">Ao redor da mesa,<br>ninguém envelhece.</h2>
-    <div class="fim" style="display:flex;flex-direction:column;gap:20px">
-      <p class="sub apagado">A tavola non s'invecchia.</p>
-      <p class="corpo apagado">Tudo o que a marca disser vai existir para explicar, completar e dar sentido a esta frase.</p>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">08</span></div>
-</section>
-
-<!-- 09 · Origem do provérbio · Tipo C -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · De onde vem</span><h2 class="titulo">Um provérbio italiano que o Brasil também entende.</h2></div>
-    <div class="grade dois fim">
-      <div class="item"><span class="num">A tavola non s'invecchia</span><p class="sub" style="color:var(--preto)">Em séculos passados, era um aviso contra os excessos. Com o tempo, virou celebração: quem fica à mesa com quem gosta esquece o relógio.</p></div>
-      <div class="item"><span class="num">A tavola si diventa giovane · Toscana</span><p class="sub" style="color:var(--preto)">À mesa, a gente fica mais jovem. O tempo ali não se conta em minutos. Vira memória, e memória não envelhece.</p></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">09</span></div>
-</section>
-
-<!-- 10 · Relógio parado · Tipo D -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · O gesto</span><h2 class="titulo">Um relógio parado na mesa.</h2></div>
-    <div class="relogio fim">
-      <svg viewBox="0 0 200 200" role="img" aria-label="Relógio parado">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
-        <g stroke="#B8B8B8" stroke-width="1.5">
-          <line x1="100" y1="10" x2="100" y2="22"/><line x1="190" y1="100" x2="178" y2="100"/>
-          <line x1="100" y1="190" x2="100" y2="178"/><line x1="10" y1="100" x2="22" y2="100"/>
-        </g>
-        <line x1="100" y1="100" x2="100" y2="52" stroke="#1A1A1A" stroke-width="3" transform="rotate(195 100 100)"/>
-        <line x1="100" y1="100" x2="100" y2="30" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(180 100 100)"/>
-        <circle cx="100" cy="100" r="3.5" fill="#1A1A1A"/>
-      </svg>
-      <div class="passos">
-        <div class="grade">
-          <div class="item"><span class="num">01</span><h3>O cliente chega.</h3><p>O atendente coloca um pequeno relógio na mesa.</p></div>
-          <div class="item"><span class="num">02</span><h3>Marca a hora da chegada.</h3><p>E os ponteiros ficam ali, parados.</p></div>
-          <div class="item"><span class="num">03</span><h3>Alguém pergunta.</h3><p>“Esse relógio está quebrado?”</p></div>
-          <div class="item"><span class="num">04</span><h3>A resposta.</h3><p>“Não. É que ao redor da nossa mesa ninguém envelhece.”</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">10</span></div>
-</section>
-
-<!-- 11 · Raízes · Tipo D -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · As raízes</span><h2 class="titulo">Uma receita italiana que chegou de passagem e decidiu ficar.</h2></div>
-    <div class="espelho fim">
-      <div class="cab meta">Itália</div><div class="cab meta">Nordeste</div>
-      <div class="it">Os butteri da Maremma, vaqueiros a cavalo</div><div>Os vaqueiros do sertão</div>
-      <div class="it">O cuscusu de Trapani, cozido no vapor</div><div>O cuscuz da cuscuzeira</div>
-      <div class="it">Cadeiras na porta, no fim do dia</div><div>Cadeiras na calçada</div>
-      <div class="it">A passeggiata ao entardecer</div><div>A volta na orla</div>
-      <div class="it">A controra, o tempo suspenso da tarde</div><div>O cochilo depois do almoço</div>
-      <div class="it">Chi va piano va sano e va lontano</div><div>Devagar se vai ao longe</div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">11</span></div>
-</section>
-
-<!-- 12 · O cavalo · Tipo B -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · O cavalo</span><h2 class="titulo">O animal que mais caminhou ao lado do homem sabe mudar de ritmo.</h2></div>
-    <div class="andamentos fim">
-      <div class="item"><h3>Passo</h3><p>O ritmo de quem chegou. O único em que cavalo e cavaleiro conversam.</p></div>
-      <div class="item fora"><h3>Trote</h3><p>O ritmo da rotina, do dia a dia.</p></div>
-      <div class="item fora"><h3>Galope</h3><p>O ritmo da semana. Necessário, mas não para sempre.</p></div>
-    </div>
-    <p class="corpo apagado" style="max-width:70ch">A vida pede os três. O que andamos esquecendo é o passo. O cavalo entra nas ilustrações, na identidade e em assinaturas do símbolo.</p>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">12</span></div>
-</section>
-
-<!-- 13 · Rede social · Tipo C -->
-<section class="slide bg-medio" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta" style="color:#4a4a4a">03 · Vertente visual</span><h2 class="titulo caixa">A mais antiga das redes sociais.</h2></div>
-    <div class="fim" style="display:flex;flex-direction:column;gap:28px">
-      <p class="sub">Muito antes do feed, já existiam a calçada, a varanda e a mesa. A conexão que o celular promete, a mesa sempre entregou.</p>
-      <p class="corpo" style="color:#4a4a4a">Linha visual em criação, a partir de uma expressão do cronista Xico Sá sobre a conversa na calçada nordestina.</p>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta" style="color:#4a4a4a">Origun</span><span class="meta c" style="color:#4a4a4a">Terapia de Marca</span><span class="meta d" style="color:#4a4a4a">13</span></div>
-</section>
-
-<!-- 14 · Persona · Tipo C -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · Persona · Em construção</span><h2 class="titulo">Quem fala pela marca.</h2></div>
-    <div class="fim" style="display:flex;flex-direction:column;gap:28px">
-      <p class="sub">Uma mulher italiana e nordestina. Aprendeu a massa com o pai, o molho com a mãe, e servia os irmãos à mesa. Chegou a Aracaju, reconheceu um pouco da Itália por aqui e se apaixonou pelo resto.</p>
-      <p class="corpo apagado" style="max-width:70ch">Aprendeu os hábitos daqui sem perder os princípios de lá. Ela é a voz da marca: leve, calorosa, cheia de analogias entre os dois mundos. Nome, história e jeito de falar ainda vamos construir juntos.</p>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">14</span></div>
-</section>
-
-<!-- 15 · Frases · Tipo D -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · Frases que completam o pensamento · Rascunho</span><h2 class="titulo">Toda frase da marca responde à mesma ideia.</h2></div>
-    <div class="grade dois fim citacao">
-      <div class="item"><span class="num">O relógio parado</span><h3>Não está quebrado. Ao redor da nossa mesa, ninguém envelhece.</h3></div>
-      <div class="item"><span class="num">Sobre memória</span><h3>Tem tempo que passa. E tem tempo que fica.</h3></div>
-      <div class="item"><span class="num">Sobre o cavalo</span><h3>Lá fora, a vida anda a galope. Aqui, a gente vai a passo.</h3></div>
-      <div class="item"><span class="num">Sobre a origem</span><h3>Uma receita italiana que chegou de passagem e decidiu ficar.</h3></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">15</span></div>
-</section>
-
-<!-- 16 · Próximos passos · Tipo D -->
-<section class="slide bg-branco" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">03 · Próximos passos</span><h2 class="titulo">O que ainda vamos definir.</h2></div>
-    <div class="grade cinco fim">
-      <div class="item"><span class="num">01</span><h3>Brand Idea e manifesto</h3><p>O texto que explica a marca inteira a partir do pensamento central.</p></div>
-      <div class="item"><span class="num">02</span><h3>Nome</h3><p>Galileo é o nome oficial. Um possível renaming será estudado, e a decisão é de vocês.</p></div>
-      <div class="item"><span class="num">03</span><h3>Persona</h3><p>Nome, história e voz.</p></div>
-      <div class="item"><span class="num">04</span><h3>Território de palavras</h3><p>As palavras que são da Galileo e as que ela nunca usa.</p></div>
-      <div class="item"><span class="num">05</span><h3>Identidade visual</h3><p>O cavalo, a mesa, a natureza, os materiais rústicos.</p></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">16</span></div>
-</section>
-
-<!-- 17 · Perguntas · Tipo C -->
-<section class="slide bg-claro" hidden>
-  <div class="miolo">
-    <div class="topo"><span class="meta">Para vocês</span><h2 class="titulo">O que vocês sentiram?</h2></div>
-    <div class="grade cinco fim">
-      <div class="item"><span class="num">01</span><h3>O que nessa direção soa como vocês?</h3></div>
-      <div class="item"><span class="num">02</span><h3>O que soa como outra marca?</h3></div>
-      <div class="item"><span class="num">03</span><h3>O relógio parado cabe na rotina do salão?</h3></div>
-      <div class="item"><span class="num">04</span><h3>A persona faz sentido para vocês?</h3></div>
-      <div class="item"><span class="num">05</span><h3>Que história de vocês à mesa precisa estar aqui?</h3></div>
-    </div>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">17</span></div>
-</section>
-
-<!-- 18 · Fechamento · Tipo A -->
-<section class="slide bg-preto" hidden>
-  <div class="miolo">
-    <span class="meta">Galileo</span>
-    <h2 class="display">Ao redor da mesa,<br>ninguém envelhece.</h2>
-  </div>
-  <div class="rodape"><span class="meta">Origun</span><span class="meta c">Terapia de Marca</span><span class="meta d">18</span></div>
-</section>
-
-</div></div>
-
-<div id="nav">
-  <button id="prev" aria-label="Slide anterior">←</button>
-  <span id="contador">01 / 18</span>
-  <button id="next" aria-label="Próximo slide">→</button>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Galileo · 2026</span>
+<h1 class="titulo caixa">Expressão Verbal da Marca</h1>
+<p class="sub apagado">Tudo o que a Galileo é, acredita e diz, construído a partir da Terapia de Marca com Matheus e Daniel.</p>
+<h2 class="display fim">Ao redor da mesa,<br>ninguém envelhece.</h2>
+</div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">Sumário</span><h2 class="titulo">Como ler este documento.</h2></div><p class="corpo" style="max-width:70ch">Cada capítulo completa o anterior. A Brand Idea é a ideia central; os capítulos seguintes mostram no que a marca acredita, como ela é percebida, o que ela diz e como ela age. No fim, a marca está inteira.</p><div class="grade quatro fim "><div class="item"><span class="num">00</span><h3>Como chegamos aqui</h3></div><div class="item"><span class="num">01</span><h3>Brand Idea</h3></div><div class="item"><span class="num">02</span><h3>Valores</h3></div><div class="item"><span class="num">03</span><h3>Atributos</h3></div><div class="item"><span class="num">04</span><h3>Manifesto</h3></div><div class="item"><span class="num">05</span><h3>Analogias e Associações</h3></div><div class="item"><span class="num">06</span><h3>Longa Fermentação · Manual</h3></div><div class="item"><span class="num">07</span><h3>Território de Frases</h3></div><div class="item"><span class="num">08</span><h3>Slogan e Taglines</h3></div><div class="item"><span class="num">09</span><h3>Persona</h3></div><div class="item"><span class="num">10</span><h3>Arquétipo</h3></div><div class="item"><span class="num">11</span><h3>Tom de Voz</h3></div><div class="item"><span class="num">Anexo</span><h3>Repertório Completo</h3></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 00</span>
+<h2 class="display">Como chegamos aqui</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>O caminho que levou à marca: a conversa com os donos, a pesquisa e a tensão que encontramos.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Mostrar que nada aqui foi inventado. Cada decisão nasce do que os donos disseram e do que a pesquisa confirmou.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como ponto de partida. Sempre que surgir uma dúvida, volte aqui: a marca precisa continuar fiel a esta origem.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">00 · O processo</span><h2 class="titulo menor">Três etapas até a marca.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">01</span><h3>Terapia de Marca</h3><p>Uma conversa de mais de três horas com Matheus e Daniel sobre o negócio, o lugar, o público e o que eles acreditam. Dela saíram os valores, o público e o que a Galileo não quer ser.</p></div><div class="item"><span class="nome">02</span><h3>Pesquisa</h3><p>Dados sobre tempo de tela, refeições, natureza e memória, e referências da Itália e do Nordeste que ajudam a explicar o que a marca quer dizer.</p></div><div class="item"><span class="nome">03</span><h3>Construção</h3><p>A expressão verbal foi construída passo a passo, cada etapa validada antes da seguinte, para que tudo fosse coerente entre si.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">00 · O que ouvimos</span><h2 class="titulo">Palavras dos donos que guiaram tudo.</h2></div><div class="grade tres fim citacao"><div class="item"><span class="num">Matheus</span><h3>“A qualidade da pizza. Foi o que me fez ser cliente.”</h3></div><div class="item"><span class="num">Daniel</span><h3>“No mínimo como está. Dali para cima.”</h3></div><div class="item"><span class="num">Matheus</span><h3>“O mais importante não é só a comida. É estar ali com as pessoas.”</h3></div><div class="item"><span class="num">Daniel</span><h3>“Uma tranquilidade de espírito que a gente ainda não conseguiu passar.”</h3></div><div class="item"><span class="num">Matheus</span><h3>“Não quero silêncio, não. Não é do nosso perfil.”</h3></div><div class="item"><span class="num">Matheus</span><h3>“Nem sei por quê, mas gostei tanto desse lugar.”</h3></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">00 · A tensão</span><h2 class="titulo">Nunca estivemos tão conectados. E nunca comemos tão separados.</h2></div><p class="sub">Moramos na cidade conhecida pela tranquilidade e, mesmo assim, o tempo livre virou tempo de tela, as refeições se separaram e o verde ficou longe. Não falta tempo: falta estar nele.</p><div class="grade quatro fim dados"><div class="item"><span class="num">ElectronicsHub · 2023</span><h3>9h32</h3><p>por dia no celular. O Brasil é o 2º país que mais passa tempo na tela.</p></div><div class="item"><span class="num">Universidade de Oxford · 2017</span><h3>1 em 3</h3><p>jantares de dia útil são feitos sozinhos. Quem come acompanhado com frequência se diz mais feliz.</p></div><div class="item"><span class="num">Universidade da Colúmbia Britânica</span><h3>4.600</h3><p>pessoas estudadas: quem prioriza tempo em vez de dinheiro é mais feliz, em qualquer faixa de renda.</p></div><div class="item"><span class="num">ISMA</span><h3>30%</h3><p>dos trabalhadores brasileiros têm sintomas de esgotamento.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 01</span>
+<h2 class="display">Brand Idea</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>A ideia central da marca: a crença da qual nascem todas as frases, ações e decisões.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Dar à Galileo um único pensamento para defender. Tudo o que a marca fizer precisa explicar, completar ou provar esta ideia.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como filtro. Antes de qualquer decisão, de um sabor novo a uma parceria, a pergunta é: isso faz o tempo parar, reúne a mesa ou cria memória?</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><span class="meta">01 · Brand Idea</span><h2 class="display" style="color:var(--bordo)">Ao redor da mesa,<br>ninguém envelhece.</h2><p class="sub apagado fim">Inspirada no provérbio italiano <span style="color:var(--preto)">“A tavola non s’invecchia”</span>, que quer dizer: à mesa, não se envelhece.</p></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">01 · Brand Idea · O texto</span><h2 class="titulo menor">A ideia explicada do nosso jeito.</h2></div><div class="manifesto duas fim"><div><p><b>A gente não envelhece com o tempo. Envelhece com o tempo que passa sem deixar lembrança.</b></p><p>A semana que se resolve inteira pela tela. O jantar em que cada um come num horário. O “precisamos marcar” que nunca vira data.</p><p>À mesa, o tempo para de ser contado e começa a ser guardado. Fica guardado na conversa que atravessou a noite, na risada que ninguém consegue explicar no dia seguinte, na história que alguém ainda vai contar daqui a dez anos começando com “lembra daquela vez?”.</p></div><div><p>É por isso que, ao redor da mesa, ninguém envelhece. Cada hora vivida ali vira lembrança, e lembrança não tem idade.</p><p>A Galileo existe para abrir espaço para esse tempo. Ela recupera um costume que o mundo anda esquecendo: sentar junto e deixar a noite decidir a hora de ir embora. E faz isso ao ar livre, com o vento da tarde, o cheiro da terra e os cavalos por perto, que ainda andam no ritmo que a cidade esqueceu.</p><p><b>A pizza é o convite para sentar. Os convidados são a razão para ficar.</b></p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">01 · Brand Idea · Como funciona</span><h2 class="titulo menor">Três movimentos, sempre nesta ordem. Toda expressão da marca ativa pelo menos um deles.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">O tempo para.</span><p>O fim de tarde, o vento, os cavalos no seu passo e o relógio parado sobre a mesa tiram a pessoa do ritmo da semana.</p></div><div class="item"><span class="nome">A mesa reúne.</span><p>Com o tempo parado, sobra espaço para os laços: gente lado a lado, celular esquecido no bolso, conversa sem hora para acabar.</p></div><div class="item"><span class="nome">A memória fica.</span><p>O que foi vivido ali vira lembrança. É o tempo que fica, o único que dinheiro não compra.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">01 · Brand Idea · Personalidade</span><h2 class="titulo menor">O que define o jeito da ideia.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">Nostálgica, mas vibrante</span><h3>A Galileo busca no passado os costumes, não a melancolia.</h3><p>A nostalgia está nos gestos: a mesa comprida, a madeira gasta pelo uso, a receita que passou de mão em mão. A vibração está nas pessoas: a risada que sobe de tom, a música boa, a garrafa que não estava nos planos. Ela traz o passado para hoje à noite.</p></div><div class="item"><span class="nome">Convidados, não clientes</span><h3>Os convidados são os protagonistas.</h3><p>A pizza precisa ser impecável justamente para não roubar a cena. Na Galileo não temos clientes, temos convidados: todos são convidados a compartilhar uma mesa e uma boa pizza.</p></div><div class="item"><span class="nome">Um eco no nome</span><h3>Galileo aprendeu a medir o tempo.</h3><p>Galileo Galilei descobriu o ritmo do pêndulo observando uma lâmpada balançar numa catedral. Na mesa que leva o nome dele, o tempo para.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">01 · Brand Idea · O filtro</span><h2 class="titulo menor">O que a ideia aceita e o que ela recusa.</h2></div><div class="grade dois topicos fim"><div class="item"><span class="nome">Aceita</span><p>Mesa compartilhada, fim de tarde, conversa longa, encontros promovidos pela casa, natureza, cavalos, materiais com marca de uso, música que acompanha sem tomar conta, excelência sem cerimônia.</p></div><div class="item"><span class="nome">Recusa</span><p>Rotatividade, etiqueta que retrai, pressa no salão, celular no centro da mesa, barulho que impede a conversa, ostentação, o produto como único assunto da comunicação.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 02</span>
+<h2 class="display">Valores</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>Os princípios que orientam como a Galileo age, inclusive quando isso custa algo.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Garantir que a marca seja a mesma em qualquer situação: na cozinha, no salão, numa parceria ou numa resposta difícil.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como critério de decisão e de treinamento da equipe. Os nomes e a ordem foram definidos pelos próprios donos.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">02 · Valores</span><h2 class="titulo menor">Cinco valores, na ordem definida pelos donos.</h2></div><div class="grade cinco topicos fim"><div class="item"><span class="nome">Autenticidade</span><h3>A Galileo é, no salão, o que os donos são em casa.</h3><p>Receitas com autoria própria. Só histórias reais. Um ambiente que reflete o jeito de viver de quem está por trás da casa.<br><br><span class="naoe">Não é:</span> imitar a Itália, encenar sofisticação ou criar personagem.</p></div><div class="item"><span class="nome">Conexão</span><h3>Tudo aqui existe para aproximar pessoas.</h3><p>Rituais como o relógio parado e o Cartão do Tempo. Encontros que criam comunidade. Música escolhida para criar laços.<br><br><span class="naoe">Não é:</span> proibir o celular ou forçar interação. A Galileo convida, não obriga.</p></div><div class="item"><span class="nome">Leveza</span><h3>Alegria sem etiqueta.</h3><p>Ninguém precisa se arrumar para ser bem recebido. Tom próximo. A natureza desacelera a tarde sozinha.<br><br><span class="naoe">Não é:</span> bagunça, descuido ou barulho que impede a conversa.</p></div><div class="item"><span class="nome">Acolhimento</span><h3>Quem chega é convidado.</h3><p>Receber sem apressar e lembrar de quem voltou. Famílias e crianças bem-vindas. A equipe vive o espírito da casa.<br><br><span class="naoe">Não é:</span> servilismo nem cerimônia.</p></div><div class="item"><span class="nome">Excelência</span><h3>A base de toda boa memória.</h3><p>Matéria-prima com o rigor que a Itália ensinou. Massa de longa fermentação. Padrão escrito na cozinha: “no mínimo como está, dali para cima”.<br><br><span class="naoe">Não é:</span> autoelogio, preço como status ou formalidade.</p></div></div><p class="corpo" style="max-width:none"><b>Como sustentam a Brand Idea.</b> O tempo para: leveza. A mesa reúne: conexão e acolhimento. A memória fica: autenticidade e excelência, porque só fica na memória o que é verdadeiro e bem feito.</p></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 03</span>
+<h2 class="display">Atributos</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>As qualidades pelas quais a marca quer ser percebida. Os valores dizem como ela age; os atributos, como as pessoas a sentem.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Orientar a percepção: cada peça, ambiente ou texto precisa transmitir esses atributos.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como checagem. Ao avaliar uma peça, pergunte se ela parece afetiva, vibrante e atemporal.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">03 · Atributos principais</span><h2 class="titulo menor">Como a Galileo quer ser sentida.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">Afetiva</span><h3>O que as pessoas sentem primeiro.</h3><p>A Galileo fala das pessoas antes do produto, guarda lembranças e recebe quem chega como convidado. Aparece nas Lembranças da Mesa, no Cartão do Tempo, no tom de voz e no Convivium.</p></div><div class="item"><span class="nome">Vibrante</span><h3>A energia de mesa cheia.</h3><p>Risada, música boa, conversa que se estende. É o que impede a nostalgia de virar melancolia. Aparece na música, no Convivium ao pôr do sol e numa linguagem visual com vida.</p></div><div class="item"><span class="nome">Atemporal</span><h3>O atributo que traduz a Brand Idea.</h3><p>A Galileo não segue moda e não envelhece: guarda costumes antigos e os vive hoje à noite. Aparece no relógio parado, no ritual do pôr do sol, nas ilustrações e nos materiais com marca de uso.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">03 · Atributos secundários</span><h2 class="titulo menor">Como a marca completa a percepção.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">Acolhedora</span><p>Ninguém precisa se arrumar ou se adaptar para ser bem-vindo.</p></div><div class="item"><span class="nome">Serena</span><p>Sem pressa, no ritmo do passo.</p></div><div class="item"><span class="nome">Natural</span><p>Ar livre, verde, pôr do sol e cavalos fazem parte de quem ela é.</p></div><div class="item"><span class="nome">Descomplicada</span><p>Alto padrão sem etiqueta.</p></div><div class="item"><span class="nome">Cuidadosa</span><p>Atenção à matéria-prima, à massa e a cada detalhe da noite.</p></div><div class="item"><span class="nome">Elegante</span><p>Encanta pela simplicidade, nunca pela ostentação.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 04</span>
+<h2 class="display">Manifesto</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>O texto que conta a crença da marca em voz alta, do problema ao convite.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Fazer o leitor sentir que alguém finalmente disse o que ele sentia e não sabia dizer. É a alma da marca em forma de texto.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Em vídeo, no site, na parede do salão, no cardápio e na apresentação para parceiros. Pode ser usado inteiro ou em trechos, sem reescrever.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">04 · Manifesto</span></div><div class="manifesto duas fim"><div><p><b>A gente não envelhece com o tempo.<br>Envelhece com o tempo que passa sem deixar lembrança.</b></p><p>E o tempo anda passando assim. A semana corre a galope, a conversa acontece pela tela, cada um come no seu horário. Ninguém escolheu viver desse jeito. A gente só foi esquecendo alguns costumes pelo caminho.</p><p>A Galileo existe para relembrá-los.</p><p>Na Itália de Galileo, o dia começava ao pôr do sol. Aqui, ainda começa. É a hora em que o tempo troca o galope pelo passo: a parte do dia que anda mais devagar e, por isso, vale mais.</p><p>É quando a natureza faz a sua parte. O vento da tarde, o céu mudando de cor, os cavalos no seu ritmo. Com tanto verde em volta, a gente se conecta mais com quem está à mesa. Um ambiente que faz o tempo ficar.</p><p>A Itália nos ensinou a excelência da matéria-prima. O Brasil nos ensinou que ela fica melhor dividida. A receita é italiana. A mesa é brasileira.</p></div><div><p>Por isso nossa massa leva tempo e cuidado, o mesmo que uma boa conversa pede. E chega à mesa inteira, para ser repartida entre quem importa.</p><p>Aqui, a mais antiga rede social do mundo continua funcionando. Ela tem uma mesa no meio, e nenhuma notificação vale mais que um “lembra daquela vez?”.</p><p>Quem faz a noite são os convidados. A risada que sobe de tom, a história contada pela décima vez, a música boa, a garrafa que não estava nos planos. A pizza é o convite para sentar. A companhia é a razão para ficar.</p><p>Os dias iguais passam rápido e somem. Os dias à mesa também passam rápido, mas ficam. Viram memória. E na memória de quem dividiu a mesa com a gente, a gente nunca envelhece.</p><p>Daqui a vinte anos, alguém ainda vai lembrar de você assim: rindo, nesta mesa.</p><p>A Galileo guarda costumes antigos. O preferido é o de acompanhar.</p><p>Puxe uma cadeira. O dia está só começando.</p><p class="assin">Ao redor da mesa, ninguém envelhece.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">04 · Manifesto · Construção</span><h2 class="titulo menor">Por que o texto é construído assim.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">01</span><h3>A abertura é a tese.</h3><p>As duas primeiras linhas explicam a frase final antes de ela aparecer.</p></div><div class="item"><span class="nome">02</span><h3>O problema sem guerra.</h3><p>“Ninguém escolheu viver desse jeito” tira a culpa de todos. O costume se perdeu pelo caminho.</p></div><div class="item"><span class="nome">03</span><h3>O texto segue o dia.</h3><p>Pôr do sol, natureza, massa, mesa, noite e memória, na ordem em que a noite acontece na Galileo.</p></div><div class="item"><span class="nome">04</span><h3>Energia antes da memória.</h3><p>Os convidados e a risada vêm antes da lembrança. É isso que mantém a marca vibrante.</p></div><div class="item"><span class="nome">05</span><h3>O fecho volta ao começo.</h3><p>“O dia está só começando” retoma a hora italiana e termina como convite.</p></div><div class="item"><span class="nome">06</span><h3>Vocabulário controlado.</h3><p>“Convidados” no lugar de clientes. “Ficar” sempre como o tempo que fica.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 05</span>
+<h2 class="display">Analogias e Associações</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>As referências italianas, nordestinas e científicas que dão base e profundidade ao que a marca diz.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Permitir que a Galileo explique sua ideia por imagens e histórias, sem precisar dizer tudo diretamente.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como fonte para frases, ilustrações, conteúdo e conversas no salão. Algumas viram texto; outras, só visual.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">05 · O tempo para</span><h2 class="titulo">Na Itália de Galileo, o dia começava ao pôr do sol.</h2></div><div class="grade tres fim "><div class="item"><span class="num">A referência</span><h3>Ora italica <span class="trad">(hora italiana)</span></h3><p>Durante séculos, boa parte da Itália contou as 24 horas do dia a partir do pôr do sol, e não da meia-noite. O relógio pintado por Paolo Uccello na Catedral de Florença, em 1443, segue esse sistema até hoje.</p></div><div class="item"><span class="num">O que diz sobre a Galileo</span><h3>Ao pôr do sol, o tempo troca o galope pelo passo.</h3><p>Para a Galileo, o dia começa nesse horário porque é quando o tempo desacelera. É a parte mais valiosa do dia: a hora de estar com a família e os amigos, criar laços e memórias.</p></div><div class="item"><span class="num">Provérbios italianos</span><h3>Il dì loda la sera <span class="trad">(o dia se louva ao entardecer)</span><br>Rosso di sera, bel tempo si spera <span class="trad">(céu vermelho ao entardecer, tempo bom se espera)</span></h3><p>O primeiro é de Petrarca: é no fim da tarde que o dia mostra o quanto valeu. O segundo é um ditado de marinheiro: tarde vermelha anuncia um dia seguinte bonito.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">05 · A natureza</span><h2 class="titulo">Um ambiente que faz o tempo ficar.</h2></div><div class="grade tres fim "><div class="item"><span class="num">Stanford e Minnesota · 2012</span><h3>Encantamento alarga o tempo.</h3><p>Momentos de encantamento, como um pôr do sol, fazem as pessoas sentirem que têm mais tempo e as deixam mais pacientes e dispostas a dedicar tempo aos outros.</p></div><div class="item"><span class="num">Universidade de Rochester · 370 participantes</span><h3>A natureza aproxima pessoas.</h3><p>Quem teve contato com a natureza passou a valorizar mais as relações próximas e ficou mais generoso.</p></div><div class="item"><span class="num">Como a Galileo usa</span><h3>A natureza em volta faz a gente se conectar com quem está à mesa.</h3><p>O ambiente é cenário, mas um cenário que trabalha: alarga o tempo e vira a atenção das pessoas umas para as outras.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">05 · A mesa reúne</span><h2 class="titulo">A Itália nos deu a pizza. O Brasil deu a ela uma mesa para dividi-la.</h2></div><div class="grade tres fim "><div class="item"><span class="num">Companhia</span><h3>Quem divide o pão.</h3><p>“Companheiro” e “companhia” vêm do latim <i>com</i> (junto) e <i>panis</i> (pão). Pizza é pão: quem divide uma pizza é, na origem da palavra, companhia.</p></div><div class="item"><span class="num">Itália e Brasil</span><h3>Na Itália, a pizza é individual. No Brasil, é dividida.</h3><p>Na Itália, cada um pede a sua, inteira e sem cortar. No Brasil, ela chega em fatias para a mesa toda. A Galileo une os dois: a excelência da matéria-prima italiana e o costume brasileiro de dividir.</p></div><div class="item"><span class="num">A mais antiga rede social</span><h3>Uma mesa.</h3><p>Expressão inspirada no cronista Xico Sá. A conexão que o celular promete, a mesa sempre entregou.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">05 · A memória fica</span><h2 class="titulo">Por que ninguém envelhece à mesa.</h2></div><div class="grade tres fim "><div class="item"><span class="num">Dias iguais somem</span><h3>A memória estica o tempo vivido.</h3><p>Dias de rotina deixam poucas lembranças e encolhem quando olhamos para trás. Dias vividos juntos parecem longos na memória. É a base de “a gente envelhece com o tempo que passa sem deixar lembrança”.</p></div><div class="item"><span class="num">Jovens na memória</span><h3>O “eu” que fica.</h3><p>Na memória de quem dividiu a mesa com a gente, a gente nunca envelhece. É ali que continuamos jovens.</p></div><div class="item"><span class="num">Rememoração</span><h3>Toda mesa boa lembra outra.</h3><p>A Galileo não precisa inventar memórias. Ela desperta as que já existem e convida para criar novas.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">05 · Referências visuais</span><h2 class="titulo">O que vira ilustração, e não texto.</h2></div><div class="grade quatro fim "><div class="item"><span class="num">Butteri e vaqueiros</span><h3>Butteri della Maremma <span class="trad">(vaqueiros da Maremma, região da Toscana)</span></h3><p>Os vaqueiros italianos e os do Nordeste: dois mundos que vivem a cavalo, numa série de ilustrações com essa assinatura.</p></div><div class="item"><span class="num">A vigília no estábulo</span><h3>Atmosfera</h3><p>Nas noites frias, camponeses italianos se reuniam nos estábulos, aquecidos pelos animais, para conversar e contar histórias. Inspira ilustrações de pessoas reunidas com os cavalos ao fundo.</p></div><div class="item"><span class="num">A colheita em roda</span><h3>Trebbiatura <span class="trad">(a debulha coletiva do trigo)</span> e farinhada</h3><p>O trabalho coletivo do trigo na Itália e da farinha no Nordeste, feito em roda e com conversa. Acompanha as peças sobre a qualidade da massa.</p></div><div class="item"><span class="num">O cavalo</span><h3>Participante, não centro.</h3><p>Um estudo-piloto de 2025 observou que, quando há vínculo, o coração de pessoas e cavalos pode entrar no mesmo ritmo. Os cavalos lembram o tempo de andar a passo. Usar com contenção.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 06</span>
+<h2 class="display">Longa Fermentação</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>Um manual de rituais, encontros, lembranças e parcerias para a Galileo aplicar no dia a dia e ver a marca ganhar vida e forma.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Transformar a Brand Idea em coisas que os convidados vivem, e não só leem. Como uma boa massa e um bom vinho, a marca melhora com tempo e cuidado. Daí o nome.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Cada página traz uma ação, com o passo a passo. Comece pelas marcadas como “Começar agora” e acrescente as outras aos poucos.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">06 · Como usar este manual</span>
+<h2 class="titulo">Cada ação está organizada da mesma forma.</h2>
+<p class="corpo" style="max-width:80ch">O manual não é uma lista de ideias soltas: é um guia de aplicação. Cada página mostra uma ação completa, para que a equipe saiba exatamente o que fazer, como fazer e por quê.</p></div>
+<div class="estrutura">
+<div><h3>O que é</h3><p>A ação, descrita em uma frase.</p></div>
+<div><h3>Por que fazer</h3><p>Como ela prova a Brand Idea na prática.</p></div>
+<div><h3>Como fazer</h3><p>O passo a passo para a equipe.</p></div>
+<div><h3>Quando</h3><p>A frequência ou a ocasião.</p></div>
+<div><h3>O que é preciso</h3><p>Materiais, pessoas e custo.</p></div>
+<div><h3>Fase</h3><p>Começar agora, quando estabilizar ou próximo passo.</p></div>
 </div>
-
+<div class="grade dois fim">
+<div class="item"><span class="num">A regra de toda ação</span><h3>Ela precisa ativar pelo menos um dos três movimentos (o tempo para, a mesa reúne, a memória fica) e respeitar o filtro do que a marca aceita e recusa.</h3></div>
+<div class="item"><span class="num">As quatro partes do manual</span><h3>Rituais · Convivium · Lembranças da Mesa · Companhias</h3><p>No fim, um mapa de fases mostra a ordem de implantação.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide divisor"><div class="miolo">
+<div class="div-topo"><span class="meta">06 · Longa Fermentação · Parte 1 de 4</span><span class="div-num">01</span></div>
+<h2 class="div-nome">Rituais</h2>
+<div class="div-grade fim">
+<div><span class="rotulo">O que é</span><p>Gestos que acontecem todos os dias, em todas as mesas, sempre do mesmo jeito.</p></div>
+<div><span class="rotulo">O que inclui</span><ul><li>O sino do pôr do sol</li><li>O relógio parado</li><li>O cartão da mesa</li></ul></div>
+<div><span class="rotulo">Por que importa</span><p>São a forma mais direta de provar a Brand Idea. O convidado não lê que o tempo para: ele vê o relógio parado e ouve o sino.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Rituais</span>
+<h2>O sino do pôr do sol</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">Um sino tocado todos os dias ao pôr do sol, marcando o momento em que, na Galileo, o dia começa.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Na Itália antiga, o dia começava ao pôr do sol, anunciado pelo sino da igreja. O sino transforma o pôr do sol num momento compartilhado por todas as mesas e é uma tradição que nenhuma outra casa tem motivo para fazer.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Conferir todos os dias o horário do pôr do sol, que muda ao longo do ano.</li><li>Definir uma pessoa por turno responsável por tocar o sino.</li><li>No horário, tocar o sino. As luzes do salão baixam e a música muda para a seleção da noite.</li><li>Se um convidado perguntar, explicar: “Na Itália antiga, o dia começava ao pôr do sol. Aqui, também.”</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Todos os dias de funcionamento, no horário do pôr do sol.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Um sino de bronze ou latão, instalado em lugar visível do salão. Custo único.</p></div>
+<div><span class="rotulo">A frase</span><p>“Na Itália de Galileo, o dia começava ao pôr do sol. Aqui, ainda começa.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Rituais</span>
+<h2>O relógio parado</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">Um pequeno relógio colocado em cada mesa, com os ponteiros parados na hora em que os convidados chegaram.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">É a Brand Idea em forma de objeto. O relógio gera a pergunta, e a resposta explica a marca sem nenhum anúncio. É o tipo de detalhe que o convidado conta para os amigos.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Ao acomodar a mesa, o atendente coloca o relógio.</li><li>Ajusta os ponteiros para a hora da chegada e deixa parado.</li><li>Quando perguntarem, o atendente responde: “Ele não está quebrado, não. É que aqui, ao redor da mesa, ninguém envelhece: o tempo para, e vira lembrança.”</li><li>Ao fim da noite, recolhe o relógio para a próxima mesa.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Em todas as mesas, todos os dias.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Relógios pequenos sem mecanismo, um por mesa. Para começar com custo menor, o relógio impresso no Cartão do Tempo cumpre o mesmo papel.</p></div>
+<div><span class="rotulo">A frase</span><p>“Ele não está quebrado, não. É que aqui, ao redor da mesa, ninguém envelhece: o tempo para, e vira lembrança.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Rituais</span>
+<h2>O cartão da mesa</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">Um cartão ao lado do relógio que convida, sem proibir, a deixar o celular de lado.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">A Galileo não dá sermão sobre o celular. Ela convida, com bom humor, a viver a conexão que está à mesa.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Imprimir o cartão com a frase da rede social mais antiga do mundo.</li><li>Colocar em todas as mesas, ao lado do relógio.</li><li>Nunca pedir ou exigir que o convidado guarde o celular. O cartão faz o convite sozinho.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Em todas as mesas, todos os dias.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Cartões impressos ou um pequeno suporte de mesa. Custo baixo.</p></div>
+<div><span class="rotulo">A frase</span><p>“Você está na rede social mais antiga do mundo. Aproveite a conexão.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide divisor"><div class="miolo">
+<div class="div-topo"><span class="meta">06 · Longa Fermentação · Parte 2 de 4</span><span class="div-num">02</span></div>
+<h2 class="div-nome">Convivium</h2>
+<div class="div-grade fim">
+<div><span class="rotulo">O que é</span><p>Os encontros que a Galileo promove para as pessoas se reunirem e criarem comunidade. <i>Convivium</i> é latim para banquete e vem de <i>convivere</i>: viver junto.</p></div>
+<div><span class="rotulo">O que inclui</span><ul><li>Orientação musical</li><li>Convivium de domingo</li><li>Convivium ao pôr do sol</li><li>Convivium pós-treino</li></ul></div>
+<div><span class="rotulo">Por que importa</span><p>É onde a mesa reúne de verdade. Cada Convivium dá às pessoas um motivo para se encontrar, e à Galileo um jeito de virar tradição na vida delas.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Convivium</span>
+<h2>Orientação musical</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">O critério para escolher toda a música da casa, ambiente ou ao vivo. <i>Convivium</i> é latim para banquete e vem de <i>convivere</i>: viver junto.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">A música é parte da memória da noite. Ela pode ter energia, desde que ajude as pessoas a se sentirem bem juntas e a lembrarem de coisas boas.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Montar seleções por momento: fim de tarde e noite.</li><li>Incluir músicas animadas ou intimistas que criem laço e boas lembranças.</li><li>Excluir letras de ostentação, traição, término ou qualquer sentimento ruim, e o hit do momento tocado só para atrair público.</li><li>Revisar as seleções todo mês, com um responsável definido.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Sempre. Vale para som ambiente, músicos convidados e eventos.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Um responsável pelas seleções e um sistema de som que permita conversar.</p></div>
+<div><span class="rotulo">A frase</span><p>Critério: essa música ajuda alguém a lembrar desta noite com carinho daqui a dez anos?</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Convivium</span>
+<h2>Convivium de domingo</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">O fim de um domingo de praia: a pessoa pega o pôr do sol, entra do jeito que está e deixa o trânsito da volta passar à mesa.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">É o fim de dia perfeito para a Galileo. O convidado chega em casa já descansado, sem trânsito e com uma memória a mais. Ninguém mais oferece esse momento.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Garantir que a casa esteja aberta e pronta antes do pôr do sol de domingo.</li><li>Comunicar que não há traje: quem vem da praia é bem-vindo do jeito que está.</li><li>Divulgar no sábado e no domingo à tarde, com as frases do Convivium.</li><li>Ter a casa preparada para grupos e famílias com crianças.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Todo domingo, do fim da tarde em diante.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Comunicação semanal nas redes e equipe preparada para grupos.</p></div>
+<div><span class="rotulo">A frase</span><p>“Todo domingo perfeito termina na Galileo.” · “Da praia para a mesa. O trânsito pode esperar.” · “Antes de chegar em casa, chegue à mesa.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Convivium</span>
+<h2>Convivium ao pôr do sol</h2>
+<span class="fase">Quando estabilizar</span>
+<p class="oque">Sessões de música ao vivo que começam com o toque do sino.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Transforma o ritual do pôr do sol em encontro e dá às pessoas um motivo para vir nos dias de menor movimento, como os próprios donos sugeriram.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Definir um dia fixo da semana, de preferência quarta ou quinta.</li><li>Convidar músicos locais em formato intimista ou animado, seguindo a orientação musical.</li><li>Começar a sessão com o toque do sino.</li><li>Divulgar com o tom de voz da marca, sem urgência e sem “imperdível”.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Semanal ou quinzenal.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Músico, som adequado ao espaço e cachê. Parceria com Companhias de cultura.</p></div>
+<div><span class="rotulo">A frase</span><p>“O dia começa quando a gente se encontra.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Convivium</span>
+<h2>Convivium pós-treino</h2>
+<span class="fase">Quando estabilizar</span>
+<p class="oque">A mesa onde comunidades de esporte sentam juntas depois do treino ou da prova.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Boxes de CrossFit, provas de Hyrox e assessorias de corrida criam comunidade em torno do esforço. A Galileo é onde essa comunidade se encontra depois, e onde a amizade continua.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Mapear boxes e assessorias próximos.</li><li>Propor uma parceria: mesa reservada para o grupo depois de um treino ou prova.</li><li>Combinar uma data mensal fixa.</li><li>Receber o grupo de tênis e sem cerimônia, com pizzas para dividir.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Mensal, ou depois de provas e eventos dos parceiros.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Contato com os parceiros e espaço preparado para grupos.</p></div>
+<div><span class="rotulo">A frase</span><p>“Treinar junto aproxima. Sentar junto depois é o que faz amigos.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide divisor"><div class="miolo">
+<div class="div-topo"><span class="meta">06 · Longa Fermentação · Parte 3 de 4</span><span class="div-num">03</span></div>
+<h2 class="div-nome">Lembranças da Mesa</h2>
+<div class="div-grade fim">
+<div><span class="rotulo">O que é</span><p>Memórias feitas à mão pelos próprios convidados, durante a noite, para levar para casa. No dia a dia, simples e de baixo custo; nas datas especiais, mais elaboradas.</p></div>
+<div><span class="rotulo">O que inclui</span><ul><li>O Cartão do Tempo</li><li>O papel de mesa interativo</li><li>O Livro das Mesas</li><li>Dia dos Namorados</li><li>Aniversários</li></ul></div>
+<div><span class="rotulo">Por que importa</span><p>É a prova de que a memória fica. O que foi vivido à mesa vira um objeto que a pessoa guarda e que a faz lembrar, e voltar.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Lembranças da Mesa</span>
+<h2>O Cartão do Tempo</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">Um cartão com duas faces: na frente, o relógio com a hora da chegada; no verso, perguntas para a mesa responder e levar para casa.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">A memória fica quando é feita à mão. O cartão transforma a noite numa lembrança que os próprios convidados escrevem, com custo de impressão.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Imprimir a frente com um relógio vazio e o verso com três perguntas, em dois modelos: casal e amigos.</li><li>Ao acomodar a mesa, o atendente marca a hora da chegada a caneta e carimba a data.</li><li>Ao entregar, explica: “É para vocês responderem e levarem para casa.”</li><li>Trocar as perguntas a cada estação.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Todos os dias, em todas as mesas.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Impressão em uma cor, um carimbo de data com o símbolo da Galileo e canetas. Custo baixo.</p></div>
+<div><span class="rotulo">A frase</span><p>Casal: “O que você mais gosta nele? Qual dia vai ficar marcado para vocês? Como você quer que o outro lembre de você?” · Amigos: “Qual é a história que vocês sempre contam? Quando vai ser a próxima vez?”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Lembranças da Mesa</span>
+<h2>O papel de mesa interativo</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">O papel kraft que já cobre a mesa, impresso com uma pequena área para a família preencher junto.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Famílias reunidas criam memória quando participam juntas. O papel já seria usado de qualquer forma: só muda a impressão.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Imprimir no papel uma área com perguntas: quem chegou primeiro, quem conta a melhor história, a frase da noite.</li><li>Incluir um cavalo para as crianças colorirem.</li><li>Usar nas mesas de famílias e grupos, com lápis de cor.</li><li>Ao fim, carimbar o canto destacável para a família levar para casa.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Todos os dias, nas mesas de famílias e grupos.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Impressão do papel kraft e lápis de cor. Custo baixo.</p></div>
+<div><span class="rotulo">A frase</span><p>“A frase da noite foi: ___”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Lembranças da Mesa</span>
+<h2>O Livro das Mesas</h2>
+<span class="fase">Quando estabilizar</span>
+<p class="oque">Um álbum para cada data especial, com os cartões que os convidados escolherem deixar na casa.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Com o tempo, a Galileo terá uma estante de noites que a cidade quis guardar. É a prova visível de que ali o tempo fica.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Criar um álbum para cada data: aniversários, Dia das Mães, Dia dos Pais, eventos da marca.</li><li>Imprimir cartões do tamanho do Cartão do Tempo, com perguntas da ocasião (por exemplo: “O que você aprendeu com ela à mesa?”).</li><li>O convidado escolhe se deixa o cartão no livro ou leva para casa.</li><li>Guardar os álbuns datados num lugar visível do salão.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Somente em datas especiais e eventos da marca.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Álbuns de encaixe e cartões especiais. Custo moderado, só nas datas.</p></div>
+<div><span class="rotulo">A frase</span><p>“Aqui ficam as noites que não queremos esquecer.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Lembranças da Mesa</span>
+<h2>Dia dos Namorados</h2>
+<span class="fase">Quando estabilizar</span>
+<p class="oque">Um artista local desenha os casais, e cada um escreve uma carta que a casa guarda até o ano seguinte.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Eterniza o momento, valoriza artistas da cidade e cria um motivo para o casal voltar.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Contratar um ilustrador local para desenhar os casais em traço simples ou caricatura.</li><li>Entregar papel e envelope para cada um escrever ao outro.</li><li>Lacrar as cartas com cera e o símbolo da Galileo, anotando o contato do casal.</li><li>No ano seguinte, avisar o casal e entregar as cartas na nova visita.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Uma vez por ano, no Dia dos Namorados.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Cachê do artista, envelopes, lacre de cera e uma caixa de arquivo.</p></div>
+<div><span class="rotulo">A frase</span><p>“Para abrir daqui a um ano.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Lembranças da Mesa</span>
+<h2>Aniversários</h2>
+<span class="fase">Começar agora</span>
+<p class="oque">Uma versão especial do Cartão do Tempo, com perguntas sobre a pessoa homenageada.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">O aniversário vira uma memória escrita por quem estava à mesa, entregue à pessoa que se quer celebrar.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Ter cartões especiais de aniversário prontos no salão.</li><li>Quando a mesa avisar que é aniversário, entregar o cartão.</li><li>A mesa responde junto e entrega ao aniversariante.</li><li>Se quiserem, o cartão entra no Livro das Mesas do mês.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Sempre que houver um aniversário à mesa.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Cartões especiais impressos. Custo baixo.</p></div>
+<div><span class="rotulo">A frase</span><p>“O que essa pessoa tem que faz a mesa ficar melhor?”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide divisor"><div class="miolo">
+<div class="div-topo"><span class="meta">06 · Longa Fermentação · Parte 4 de 4</span><span class="div-num">04</span></div>
+<h2 class="div-nome">Companhias</h2>
+<div class="div-grade fim">
+<div><span class="rotulo">O que é</span><p>Na Galileo não temos parcerias, temos Companhias. Companhia, em latim, é quem divide o pão: uma Companhia é alguém com quem a Galileo divide a mesa.</p></div>
+<div><span class="rotulo">O que inclui</span><ul><li>Como escolher uma Companhia</li><li>Os cinco princípios das Companhias</li></ul></div>
+<div><span class="rotulo">Por que importa</span><p>Companhias certas levam a marca a novas pessoas e reforçam o que ela acredita. Companhias erradas confundem o que a Galileo é.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide manual"><div class="lado">
+<span class="meta">Manual · Companhias</span>
+<h2>Como escolher uma Companhia</h2>
+<span class="fase">Quando estabilizar</span>
+<p class="oque">O processo para avaliar se uma marca, pessoa ou negócio pode se tornar Companhia da Galileo.</p>
+<span class="rot">Por que fazer</span>
+<p class="porque">Toda Companhia passa a falar em nome da casa. Por isso ela precisa seguir pelo menos um dos cinco princípios e nunca ir contra a Brand Idea.</p>
+</div><div class="conteudo">
+<span class="rotulo">Como fazer</span>
+<ol class="passos"><li>Verificar se a proposta segue pelo menos um dos cinco princípios: Comunidade, Origem, Cultura, Memória ou Passagem.</li><li>Conferir se ela ativa um dos três movimentos: o tempo para, a mesa reúne, a memória fica.</li><li>Recusar sempre: marcas que vendem pressa, promoções de rotatividade, ostentação e ações com o celular no centro.</li><li>Definir com a Companhia uma ação concreta, com data, e avaliar o resultado depois.</li></ol>
+<div class="infos">
+<div><span class="rotulo">Quando</span><p>Sempre que surgir uma proposta ou oportunidade.</p></div>
+<div><span class="rotulo">O que é preciso</span><p>Uma pessoa responsável por avaliar e conduzir as Companhias.</p></div>
+<div><span class="rotulo">A frase</span><p>“Na Galileo não temos parcerias, temos Companhias.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">06 · Manual · Companhias</span><h2 class="titulo menor">Não temos parcerias, temos Companhias. Para ser escolhida como Companhia da Galileo, uma marca precisa seguir pelo menos um destes cinco princípios.</h2></div><div class="grade cinco topicos fim"><div class="item"><span class="nome">Comunidade</span><h3>Princípio: reunir pessoas.</h3><p>Quem é: boxes de CrossFit, Hyrox, assessorias de corrida, stand-up e beach tennis.<br><br>O que propor: Convivium pós-treino com mesa reservada e data mensal.</p></div><div class="item"><span class="nome">Origem</span><h3>Princípio: elevar a matéria-prima.</h3><p>Quem é: produtores locais de búfala, camarão e hortaliças. Vinícolas e importadoras.<br><br>O que propor: noites de degustação ao pôr do sol, com o produtor contando a origem do ingrediente.</p></div><div class="item"><span class="nome">Cultura</span><h3>Princípio: dar vida à atmosfera da casa.</h3><p>Quem é: músicos, ilustradores, ceramistas e marceneiros locais.<br><br>O que propor: Convivium ao pôr do sol, séries de ilustração, louças e mesas com marca de uso.</p></div><div class="item"><span class="nome">Memória</span><h3>Princípio: ajudar a guardar a noite.</h3><p>Quem é: papelarias artesanais e fornecedores de lacre de cera.<br><br>O que propor: Cartão do Tempo, envelopes e lacres feitos com a cara da casa.</p></div><div class="item"><span class="nome">Passagem</span><h3>Princípio: trazer quem é de fora para viver o tempo daqui.</h3><p>Quem é: hotéis, pousadas e agências de turismo.<br><br>O que propor: indicar a Galileo como o lugar do pôr do sol e, com a hípica, uma experiência guiada com os cavalos.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">06 · Manual · Fases</span><h2 class="titulo">A ordem de implantação.</h2></div><div class="fases fim"><div><span class="rotulo" style="color:var(--bordo);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Fase 1</span><h3>Começar agora</h3><p>O sino do pôr do sol, o relógio parado (ou o relógio impresso no cartão), o cartão da mesa, a orientação musical, o Convivium de domingo, o Cartão do Tempo, o papel de mesa e o cartão de aniversário. Tudo de custo baixo.</p></div><div><span class="rotulo" style="color:var(--bordo);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Fase 2</span><h3>Quando estabilizar</h3><p>Quando a operação estiver fluindo e a pizza estiver no preço que merece: Convivium ao pôr do sol com música ao vivo, Convivium pós-treino, Livro das Mesas, Dia dos Namorados e as primeiras Companhias.</p></div><div><span class="rotulo" style="color:var(--bordo);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Fase 3</span><h3>Próximo passo</h3><p>Companhias de passagem com hotéis e turismo, a experiência guiada com os cavalos junto à hípica e o Livro das Mesas como acervo da casa.</p></div></div><div class="grade tres fim "><div class="item"><span class="num">Uma tradição por estação</span><p>A cada estação entra um ritual, uma pergunta nova ou um Convivium. Fica o que os convidados adotarem.</p></div><div class="item"><span class="num">O termômetro</span><p>O que as pessoas escolhem guardar no Livro das Mesas mostra o que a marca faz bem.</p></div><div class="item"><span class="num">A equipe primeiro</span><p>Toda novidade é explicada antes a quem recebe. A calma começa em quem recebe.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 07</span>
+<h2 class="display">Território de Frases</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>O repertório de frases da marca, organizado por tema.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Garantir que a Galileo fale sempre com as mesmas ideias e palavras, mesmo quando muda de assunto.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como fonte para posts, cardápio, peças e salão. A frase escolhida segue o assunto da peça. Novas frases precisam caber em um destes temas.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">07 · Território</span></div><div class="grade dois fim"><div class="item"><span class="num">Raiz</span><ul class="frases"><li>Ao redor da mesa, ninguém envelhece.</li><li>A gente não envelhece com o tempo. Envelhece com o tempo que passa sem deixar lembrança.</li><li>À mesa, o tempo para de ser contado e começa a ser guardado.</li></ul></div><div class="item"><span class="num">Tempo e pôr do sol</span><ul class="frases"><li>Na Itália de Galileo, o dia começava ao pôr do sol. Aqui, ainda começa.</li><li>Ao pôr do sol, o tempo troca o galope pelo passo.</li><li>A parte do dia que anda mais devagar é a que vale mais.</li><li>O dia está só começando.</li><li>Il dì loda la sera <span class="trad">(o dia se louva ao entardecer)</span>. É no fim da tarde que o dia mostra o quanto valeu.</li><li>Rosso di sera, bel tempo si spera <span class="trad">(céu vermelho ao entardecer, tempo bom se espera)</span>.</li></ul></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">07 · Território</span></div><div class="grade dois fim"><div class="item"><span class="num">Natureza e ambiente</span><ul class="frases"><li>Um ambiente que faz o tempo ficar.</li><li>Com tanto verde em volta, a gente se conecta mais com quem está à mesa.</li><li>Diante de um céu assim, o tempo parece sobrar.</li><li>A natureza não senta à mesa, mas aproxima quem senta.</li><li>Os cavalos lembram o tempo de andar a passo.</li></ul></div><div class="item"><span class="num">Itália e Brasil</span><ul class="frases"><li>A Itália nos ensinou a excelência da matéria-prima. O Brasil nos ensinou que ela fica melhor dividida.</li><li>Da Itália, aprendemos a escolher bem os ingredientes. Do Brasil, a dividir bem a mesa.</li><li>A receita é italiana. A mesa é brasileira.</li><li>Uma excelência que veio da Itália para criar memórias no Brasil.</li><li>A Itália nos deu a pizza. O Brasil deu a ela uma mesa para dividi-la.</li></ul></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">07 · Território</span></div><div class="grade dois fim"><div class="item"><span class="num">Massa e pizza</span><ul class="frases"><li>Uma boa massa e uma boa conversa pedem a mesma coisa: tempo e cuidado.</li><li>Massa de longa fermentação: o mesmo tempo que uma boa conversa merece.</li><li>Tem coisa que só fica boa com tempo: a massa, o vinho e os amigos.</li><li>A pizza chega inteira para ser repartida.</li><li>A pizza é o convite para sentar. A companhia é a razão para ficar.</li></ul></div><div class="item"><span class="num">Mesa e companhia</span><ul class="frases"><li>A mais antiga rede social do mundo é uma mesa.</li><li>Nenhuma notificação vale mais que um “lembra daquela vez?”.</li><li>Na rede social mais antiga do mundo, o perfil é o rosto e a curtida é a risada.</li><li>A rede social mais antiga do mundo não tem algoritmo. Quem senta perto, conversa.</li><li>Aqui, o feed é a conversa, e ninguém rola para baixo.</li><li>Companhia, em latim, é quem divide o pão. Aqui, é quem divide a pizza.</li><li>O descanso vem da companhia.</li><li>Os cavalos sabem: descansa melhor quem está entre os seus.</li></ul></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">07 · Território</span></div><div class="grade dois fim"><div class="item"><span class="num">Memória</span><ul class="frases"><li>Os dias iguais passam rápido e somem. Os dias à mesa também passam rápido, mas ficam.</li><li>Na memória de quem dividiu a mesa com a gente, a gente nunca envelhece.</li><li>Daqui a vinte anos, alguém ainda vai lembrar de você assim: rindo, nesta mesa.</li><li>Alguns momentos merecem ser guardados, principalmente os vividos em companhia.</li><li>Toda mesa boa lembra outra. Esta também vai ser lembrada.</li></ul></div><div class="item"><span class="num">Costumes e convidados</span><ul class="frases"><li>Tem costumes de um tempo que a gente esqueceu. A Galileo quer relembrá-los.</li><li>A Galileo guarda costumes antigos. O preferido é o de acompanhar.</li><li>Aqui, as conversas não têm hora para acabar.</li><li>Aqui a gente olha mais para o céu. E mais para as pessoas.</li><li>Na Galileo não temos clientes, temos convidados: todos são convidados a compartilhar uma mesa e uma boa pizza.</li></ul></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">07 · Território</span></div><div class="grade dois fim"><div class="item"><span class="num">No salão</span><ul class="frases"><li>Relógio parado: “Não está quebrado. Ao redor da nossa mesa, ninguém envelhece.”</li><li>Cartão da mesa: “Você está na rede social mais antiga do mundo. Aproveite a conexão.”</li><li>Abertura do cardápio: “Escolha sem pressa. A noite é de vocês.”</li></ul></div><div class="item"><span class="num">Fechamentos curtos</span><ul class="frases"><li>Ao redor da mesa, ninguém envelhece.</li><li>O tempo que fica.</li><li>Puxe uma cadeira.</li><li>O dia está só começando.</li></ul></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 08</span>
+<h2 class="display">Slogan e Taglines</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>O slogan é a assinatura fixa da marca. As taglines são frases curtas que mudam conforme o contexto.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>O slogan torna a Galileo reconhecível em qualquer lugar. As taglines ativam um território específico em cada peça.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>O slogan acompanha a marca sempre e nunca muda. Cada peça usa no máximo uma tagline, escolhida pelo assunto.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><span class="meta">08 · Slogan</span><h2 class="display" style="color:var(--bordo)">Ao redor da mesa,<br>ninguém envelhece.</h2><div class="grade tres fim "><div class="item"><span class="num">Por que é o slogan</span><h3>É a própria Brand Idea.</h3><p>Um slogan diferente criaria uma segunda ideia competindo com a primeira.</p></div><div class="item"><span class="num">Gera pergunta</span><h3>“Como assim ninguém envelhece?”</h3><p>A resposta está no relógio, no manifesto e na conversa com o atendente. A marca prova a frase no salão.</p></div><div class="item"><span class="num">Tem origem</span><h3>“A tavola non s’invecchia”</h3><p>Provérbio italiano que quer dizer “à mesa, não se envelhece”. Não é uma frase inventada para vender.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">08 · Slogan · Detalhes</span><h2 class="titulo menor">Palavra a palavra, e as versões de apoio.</h2></div><div class="grade quatro topicos fim"><div class="item"><span class="nome">Ao redor</span><p>Coloca as pessoas em volta, frente a frente, e não só sentadas.</p></div><div class="item"><span class="nome">Da mesa</span><p>O objeto central da marca, mais forte que “pizza” ou “Galileo”.</p></div><div class="item"><span class="nome">Ninguém</span><p>Inclui todos: o casal, os avós, os amigos.</p></div><div class="item"><span class="nome">Envelhece</span><p>No presente: uma verdade que vale sempre, e não uma promessa.</p></div></div><div class="grade tres fim "><div class="item"><span class="num">Forma curta</span><h3>O tempo que fica.</h3><p>Para carimbo, lacre, rodapé e perfil.</p></div><div class="item"><span class="num">Forma italiana</span><h3>A tavola non s’invecchia <span class="trad">(à mesa, não se envelhece)</span></h3><p>Para ilustração, relógio e textura visual. Nunca sozinha nos primeiros contatos.</p></div><div class="item"><span class="num">Versão falada</span><h3>“Aqui na Galileo, ao redor da mesa ninguém envelhece. O tempo para, e vira lembrança.”</h3><p>Para a equipe usar ao receber e ao explicar o relógio.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">08 · Taglines</span><h2 class="titulo">Uma por peça, conforme o assunto.</h2></div><div class="grade tres fim grande"><div class="item"><span class="num">Tempo e pôr do sol</span><p>Aqui, o dia começa ao pôr do sol.<br>Do galope ao passo.<br>O dia está só começando.</p></div><div class="item"><span class="num">Itália e Brasil</span><p>A receita é italiana. A mesa é brasileira.<br>Excelência italiana, mesa brasileira.</p></div><div class="item"><span class="num">Produto e massa</span><p>Tempo e cuidado, da massa à mesa.<br>Feita com o tempo que uma boa conversa merece.</p></div><div class="item"><span class="num">Mesa e companhia</span><p>A mais antiga rede social do mundo.<br>O descanso vem da companhia.</p></div><div class="item"><span class="num">Memória</span><p>Para os dias que ficam.<br>Noites que viram lembrança.</p></div><div class="item"><span class="num">Convivium e convite</span><p>Viver junto começa à mesa.<br>Todo domingo perfeito termina na Galileo.<br>Puxe uma cadeira.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">08 · Regras de uso</span><h2 class="titulo menor">Como aplicar slogan e taglines.</h2></div><div class="grade quatro topicos fim"><div class="item"><span class="nome">01</span><h3>O slogan é fixo.</h3><p>Nunca é reescrito, abreviado de outra forma ou trocado por campanha.</p></div><div class="item"><span class="nome">02</span><h3>Uma tagline por peça.</h3><p>Ela pode aparecer com o slogan, nunca com outra tagline.</p></div><div class="item"><span class="nome">03</span><h3>A tagline segue o assunto.</h3><p>Post sobre o pôr do sol usa o território do tempo; peça sobre a pizza usa o do produto.</p></div><div class="item"><span class="nome">04</span><h3>Sem descritor genérico.</h3><p>Se precisar de descritor, apenas “Pizzaria”. Nada de “artesanal” ou “gourmet”.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 09</span>
+<h2 class="display">Persona</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>Os convidados ideais da Galileo, descritos como pessoas concretas. Nomes e detalhes são fictícios; o perfil vem do que os donos descreveram.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Fazer a equipe e os parceiros enxergarem pessoas reais, e não um público abstrato, ao criar qualquer ação ou mensagem.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Antes de criar uma peça, pergunte: isso fala com Bruno e Luísa, com Gabriel ou com Regina?</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo persona-miolo"><span class="meta">09 · Persona</span>
+<div class="persona">
+<div class="pcol"><div class="foto"><span class="meta">Foto</span></div>
+<div class="pcampo"><span class="pl">Nome</span><span class="pv">Bruno e Luísa Andrade</span></div>
+<div class="pcampo"><span class="pl">Idade</span><span class="pv">39 e 37 anos</span></div>
+<div class="pcampo"><span class="pl">Adjetivos principais</span><span class="pv grande">Presentes<br>Práticos</span></div></div>
+<div class="pbox"><h4>Vida pregressa</h4><p>Ele nasceu em Aracaju e tem uma empresa de engenharia. Ela veio de Itabaiana, é dentista e divide uma clínica com duas colegas. Casados há nove anos, mudaram-se para um condomínio na Zona de Expansão quando o Theo nasceu, atrás de mais verde e mais calma.</p></div>
+<div class="pbox"><h4>Recursos</h4><p>Renda confortável e rotina cheia. Casa com quintal e uma rede grande de amigos com filhos da mesma idade. Pagam bem pelo que vale a pena, mas detestam pagar caro por cerimônia. O recurso mais escasso é o tempo inteiro juntos.</p></div>
+<div class="pbox"><h4>Emoções</h4><p>Sentem que a semana passa sem que se vejam de verdade: cada um janta num horário, cada um com o celular. Cansaram de escolher entre lugares onde o Theo incomoda e lugares onde os adultos não conseguem conversar.</p></div>
+<div class="pbox"><h4>Objetivos</h4><p>Ter um lugar perto de casa para fechar o domingo com família e amigos, onde o Theo seja bem-vindo, os adultos conversem sem pressa e a comida esteja à altura. Criar memórias com o filho enquanto ele é pequeno.</p></div>
+<div class="pbox cen"><h4>Cenário</h4><p>Domingo de praia com os pais de Luísa. Na volta, o trânsito já começa a encher, e um casal amigo sugere a Galileo. Chegam com o pôr do sol, o sino toca e o Theo corre para ver os cavalos. O atendente coloca o relógio na mesa e explica por que ele está parado. Ficam três horas. No Cartão do Tempo, Luísa escreve: “O dia que vai ficar marcado é hoje.” Chegam em casa sem trânsito, com o Theo dormindo no banco de trás.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo persona-miolo"><span class="meta">09 · Persona</span>
+<div class="persona">
+<div class="pcol"><div class="foto"><span class="meta">Foto</span></div>
+<div class="pcampo"><span class="pl">Nome</span><span class="pv">Gabriel Prado</span></div>
+<div class="pcampo"><span class="pl">Idade</span><span class="pv">31 anos</span></div>
+<div class="pcampo"><span class="pl">Adjetivos principais</span><span class="pv grande">Agregador<br>Intenso</span></div></div>
+<div class="pbox"><h4>Vida pregressa</h4><p>Cresceu numa família grande, com almoço de domingo na casa da avó. É gerente comercial e treina CrossFit há cinco anos. No box encontrou uma segunda família. Não tem filhos e é sempre ele quem organiza os encontros.</p></div>
+<div class="pbox"><h4>Recursos</h4><p>Boa renda, fins de semana flexíveis e uma rede social real: família, turma do box, amigos de infância. Viaja para provas de CrossFit e Hyrox. Conhece pizza: já comeu napolitana em São Paulo e reconhece massa de longa fermentação.</p></div>
+<div class="pbox"><h4>Emoções</h4><p>Sente falta de um lugar com o espírito do box: comunidade, energia, gente de verdade. Onde a pizza era de alto nível, o lugar era cerimonioso e todos falavam baixo. Onde era descontraído, a comida não estava à altura.</p></div>
+<div class="pbox"><h4>Objetivos</h4><p>Encontrar a casa da turma: um lugar para levar a família no domingo e os amigos depois do treino, com pizza excelente e sem cerimônia. Transformar encontros esporádicos em tradição.</p></div>
+<div class="pbox cen"><h4>Cenário</h4><p>O box fecha uma parceria com a Galileo para um Convivium pós-treino. Gabriel chega de tênis, com doze pessoas. A napolitana surpreende na primeira mordida, mas o que fica é outra coisa: ninguém olha o celular e a conversa vai até tarde. No domingo seguinte, volta com os pais e os primos. Hoje é ele quem apresenta a Galileo para todo mundo.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo persona-miolo"><span class="meta">09 · Persona</span>
+<div class="persona">
+<div class="pcol"><div class="foto"><span class="meta">Foto</span></div>
+<div class="pcampo"><span class="pl">Nome</span><span class="pv">Regina Lopes</span></div>
+<div class="pcampo"><span class="pl">Idade</span><span class="pv">61 anos</span></div>
+<div class="pcampo"><span class="pl">Adjetivos principais</span><span class="pv grande">Exigente<br>Contemplativa</span></div></div>
+<div class="pbox"><h4>Vida pregressa</h4><p>Paulistana, dirigiu uma agência de publicidade por mais de vinte anos. Conhece os melhores restaurantes de São Paulo e boa parte das cidades turísticas da Europa. Aposentada há três anos, decidiu viajar com menos roteiro e mais tempo em cada lugar.</p></div>
+<div class="pbox"><h4>Recursos</h4><p>Renda alta, tempo livre e um paladar treinado por anos de bons restaurantes. Escolhe destinos por indicação de amigos e de quem mora no lugar. Valoriza hospitalidade genuína mais do que serviço formal.</p></div>
+<div class="pbox"><h4>Emoções</h4><p>Está cansada de cidades movimentadas, de filas e de restaurantes onde tudo é perfeito e nada é acolhedor. Viveu anos correndo e agora quer lugares onde o tempo passe devagar. Desconfia do que é “feito para turista”.</p></div>
+<div class="pbox"><h4>Objetivos</h4><p>Conhecer o Nordeste com calma. Encontrar o que São Paulo não entrega: tranquilidade, natureza e acolhimento, sem abrir mão da qualidade. Voltar com histórias, não só com fotos.</p></div>
+<div class="pbox cen"><h4>Cenário</h4><p>A pousada indica a Galileo como “o lugar onde a cidade vai ver o pôr do sol”. Regina chega desconfiada. O sino toca, o céu muda de cor, os cavalos aparecem na janela da baia. A pizza não deve nada às melhores que ela conhece, mas o que a surpreende é ninguém apressar a mesa. Em São Paulo, conta aos amigos: “Lá eu tenho os melhores restaurantes. Em Aracaju, eu tive tempo.”</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">09 · Persona</span><h2 class="titulo menor">O que os convidados têm em comum.</h2></div><div class="grade dois topicos fim"><div class="item"><span class="nome">O desejo comum</span><h3>Mais tempo inteiro com quem importa.</h3><p>Os perfis são diferentes, mas o desejo é o mesmo. A Galileo não precisa convencê-los de nada: só precisa ser o lugar onde esse desejo acontece.</p></div><div class="item"><span class="nome">Quem não é</span><p>Quem procura balada, som alto ou o hit do momento. Quem quer comer rápido e liberar a mesa. Quem vai para ser visto, e não para estar com alguém. São bem-vindos se chegarem, mas a comunicação não é feita para eles.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 10</span>
+<h2 class="display">Arquétipo</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>A personalidade de fundo da marca, descrita a partir de arquétipos universais.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Manter a Galileo coerente em situações que nenhum manual prevê: ela age como uma pessoa com caráter definido.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Diante de uma decisão nova, pergunte: o que um bom anfitrião faria?</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">10 · Arquétipo</span><h2 class="titulo menor">A composição da personalidade.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">Amante</span><h3>Primário · 45%</h3><p>Pelo carisma, pela elegância e pela capacidade de reunir pessoas. Aparece no cuidado sensorial (massa, luz, música), na estética das peças e em falar das pessoas antes do produto.</p></div><div class="item"><span class="nome">Prestativo</span><h3>Secundário · 35%</h3><p>A Galileo ajuda as pessoas a se conectarem. O relógio parado, o Cartão do Tempo, o Convivium e o sino são formas de servir à conexão.</p></div><div class="item"><span class="nome">Inocente</span><h3>Terciário · 20%</h3><p>É nostálgica, acredita no melhor das pessoas, dos encontros e das memórias, e olha o mundo sem cinismo. Aparece nos costumes guardados e na marca que não conta histórias tristes.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">10 · Arquétipo</span><h2 class="titulo menor">A figura que une os três.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">O Anfitrião</span><h3>De fim de tarde.</h3><p>Encanta quem chega (Amante), cuida para que todos se conectem (Prestativo) e acredita, sem cinismo, que uma mesa cheia é o melhor da vida (Inocente). Não apressa ninguém, não se gaba da comida, lembra de quem já veio.</p></div><div class="item"><span class="nome">Equilíbrio</span><h3>Um segura o risco do outro.</h3><p>O Amante sozinho tenderia ao luxo; o Prestativo e o Inocente o puxam para o serviço e a simplicidade. O Prestativo sozinho tenderia ao sermão; o carisma do Amante faz a marca convidar em vez de ensinar. O Inocente sozinho tenderia ao saudosismo; a vibração do Amante mantém tudo no presente.</p></div><div class="item"><span class="nome">O que não é</span><p>Governante: status e exclusividade. Bobo da Corte: ironia e deboche. Explorador: fuga e partida. A Galileo é sobre ficar.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo 11</span>
+<h2 class="display">Tom de Voz</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>A forma como a Galileo fala, em qualquer canal e situação.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Fazer a marca soar sempre como a mesma pessoa: no cardápio, no Instagram, no salão ou numa resposta difícil.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como guia de escrita e de atendimento. Teste final: isso soa como alguém recebendo amigos em casa no fim de uma tarde boa?</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">11 · Tom de Voz</span><h2 class="titulo menor">Cinco traços.</h2></div><div class="grade cinco topicos fim"><div class="item"><span class="nome">Acolhedora</span><h3>Fala como quem puxa a cadeira.</h3><p><span class="naoe">Não é:</span> íntima demais, cheia de gírias ou diminutivos.</p></div><div class="item"><span class="nome">Vibrante</span><h3>A energia de mesa cheia.</h3><p><span class="naoe">Não é:</span> barulhenta, em caixa alta, com exclamações em série.</p></div><div class="item"><span class="nome">Serena</span><h3>Escreve no ritmo do passo.</h3><p><span class="naoe">Não é:</span> apressada. Nunca “corre”, “últimas vagas”, “só hoje”.</p></div><div class="item"><span class="nome">Afetiva</span><h3>Pessoas e lembranças antes do produto.</h3><p><span class="naoe">Não é:</span> melancólica ou saudosista.</p></div><div class="item"><span class="nome">Segura</span><h3>Excelência sem cerimônia.</h3><p><span class="naoe">Não é:</span> técnica ou autoelogiosa. Nunca “a melhor pizza da cidade”.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">11 · Tom de Voz</span><h2 class="titulo menor">Regras de escrita.</h2></div><div class="grade tres topicos fim"><div class="item"><span class="nome">Pessoa</span><p>A marca fala como “a gente” e fala com “você”. Quem chega é sempre convidado, nunca cliente.</p></div><div class="item"><span class="nome">Frases</span><p>Curtas e completas. Uma ideia por frase.</p></div><div class="item"><span class="nome">Pontuação</span><p>Ponto final como padrão. No máximo uma exclamação por texto.</p></div><div class="item"><span class="nome">Italiano</span><p>Só as expressões do repertório, sempre com a tradução por perto na primeira vez.</p></div><div class="item"><span class="nome">Emojis</span><p>Quase nunca. No máximo um, ligado à natureza ou à mesa.</p></div><div class="item"><span class="nome">Evitar</span><p>Cliente, experiência gastronômica, gourmet, imperdível, exclusivo, promoção relâmpago, desconecte-se.</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">11 · Tom de Voz</span><h2 class="titulo menor">A voz em situações reais.</h2></div><div class="grade tres fim "><div class="item"><span class="num">Cardápio</span><p><span class="sim">Assim sim:</span> “Quatro queijos com geleia de amora. A pizza que fez a gente se apaixonar por esta casa. Peça para a mesa e veja quem pega a última fatia.”<br><span class="naoe">Assim não:</span> “Deliciosa pizza gourmet de quatro queijos premium com geleia artesanal.”</p></div><div class="item"><span class="num">Instagram, ao pôr do sol</span><p><span class="sim">Assim sim:</span> “O sino já tocou. Aqui, o dia está só começando.”<br><span class="naoe">Assim não:</span> “CORRE que o pôr do sol tá lindo hoje!!!”</p></div><div class="item"><span class="num">Convite para o Convivium</span><p><span class="sim">Assim sim:</span> “Domingo, depois da praia, a mesa está esperando. O trânsito pode esperar também.”<br><span class="naoe">Assim não:</span> “Evento imperdível neste domingo! Garanta já sua reserva!”</p></div><div class="item"><span class="num">Resposta a um elogio</span><p><span class="sim">Assim sim:</span> “Que bom que essa noite ficou. A mesa está guardada para a próxima.”<br><span class="naoe">Assim não:</span> “Obrigado pelo feedback! Volte sempre!”</p></div><div class="item"><span class="num">Resposta a uma reclamação</span><p><span class="sim">Assim sim:</span> “Sentimos muito pela espera de ontem. O tempo aqui é para ser bom, e não foi. Queremos entender o que aconteceu e acertar isso com você.”<br><span class="naoe">Assim não:</span> “Pedimos desculpas pelo transtorno.”</p></div><div class="item"><span class="num">No salão, ao receber</span><p><span class="sim">Assim sim:</span> “Boa noite, sejam bem-vindos. Fiquem à vontade: a mesa é de vocês pelo tempo que quiserem.”<br><span class="naoe">Assim não:</span> “Boa noite, mesa para quantos? Já sabem o que vão pedir?”</p></div></div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Capítulo Anexo</span>
+<h2 class="display">Repertório Completo</h2>
+<div class="grade tres fim">
+<div class="item"><span class="num">O que é</span><p>Todas as frases aprovadas que não estão no Território, reunidas em um só lugar.</p></div>
+<div class="item"><span class="num">Para que serve</span><p>Servir de consulta rápida para quem escreve pela marca.</p></div>
+<div class="item"><span class="num">Como a marca usa</span><p>Como referência. Frases novas podem ser criadas, desde que sigam o Tom de Voz e caibam em um dos temas do Território.</p></div>
+</div></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-branco"><div class="miolo"><div class="topo"><span class="meta">Anexo · Repertório</span><h2 class="titulo menor">Slogan, versões, taglines e frases de ação.</h2></div><div class="grade tres fim"><div class="item"><span class="num">Slogan e versões</span><ul class="frases"><li>Ao redor da mesa, ninguém envelhece.</li><li>O tempo que fica.</li><li>A tavola non s’invecchia <span class="trad">(à mesa, não se envelhece)</span>.</li><li>Aqui na Galileo, ao redor da mesa ninguém envelhece. O tempo para, e vira lembrança.</li><li>Ele não está quebrado, não. É que aqui, ao redor da mesa, ninguém envelhece: o tempo para, e vira lembrança.</li></ul></div><div class="item"><span class="num">Taglines</span><ul class="frases"><li>Aqui, o dia começa ao pôr do sol.</li><li>Do galope ao passo.</li><li>A receita é italiana. A mesa é brasileira.</li><li>Excelência italiana, mesa brasileira.</li><li>Tempo e cuidado, da massa à mesa.</li><li>Feita com o tempo que uma boa conversa merece.</li><li>A mais antiga rede social do mundo.</li><li>Para os dias que ficam.</li><li>Noites que viram lembrança.</li><li>Puxe uma cadeira.</li></ul></div><div class="item"><span class="num">Convivium e Lembranças</span><ul class="frases"><li>Convivium (viver junto): viver junto começa à mesa.</li><li>O dia começa quando a gente se encontra.</li><li>Todo domingo perfeito termina na Galileo.</li><li>Da praia para a mesa. O trânsito pode esperar.</li><li>Antes de chegar em casa, chegue à mesa.</li><li>Treinar junto aproxima. Sentar junto depois é o que faz amigos.</li><li>Para abrir daqui a um ano.</li><li>Aqui ficam as noites que não queremos esquecer.</li></ul></div></div><p class="corpo apagado" style="max-width:none">As demais frases estão no capítulo 07, Território de Frases.</p></div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+<section class="slide bg-bordo"><div class="miolo">
+<span class="meta">Galileo</span>
+<h2 class="display">Ao redor da mesa,<br>ninguém envelhece.</h2>
+<p class="sub apagado fim">Puxe uma cadeira. O dia está só começando.</p>
+</div><div class="rodape"><span class="meta">Origun</span><span class="meta c">Galileo · Expressão Verbal</span><span class="meta d"></span></div></section>
+</div></div>
+<div id="nav"><button id="prev" aria-label="Slide anterior">←</button><span id="contador">01 / 73</span><button id="next" aria-label="Próximo slide">→</button></div>
 <script>
 (function(){
   var palco=document.getElementById('palco');
   function fit(){var s=Math.min(window.innerWidth/1920,window.innerHeight/1080);palco.style.transform='scale('+s+')'}
   window.addEventListener('resize',fit);fit();
   var slides=[].slice.call(document.querySelectorAll('.slide')),n=slides.length,i=0;
-  var cont=document.getElementById('contador'),prev=document.getElementById('prev'),next=document.getElementById('next');
   function pad(x){return (x<10?'0':'')+x}
-  function show(k){
-    i=Math.max(0,Math.min(n-1,k));
-    slides.forEach(function(s,j){s.hidden=j!==i});
-    cont.textContent=pad(i+1)+' / '+pad(n);
-    prev.disabled=i===0;next.disabled=i===n-1;
-    try{history.replaceState(null,'','#s'+(i+1))}catch(e){}
-  }
+  slides.forEach(function(s,j){var d=s.querySelector('.rodape .d');if(d)d.textContent=pad(j+1)});
+  var cont=document.getElementById('contador'),prev=document.getElementById('prev'),next=document.getElementById('next');
+  function show(k){i=Math.max(0,Math.min(n-1,k));slides.forEach(function(s,j){s.hidden=j!==i});
+    cont.textContent=pad(i+1)+' / '+pad(n);prev.disabled=i===0;next.disabled=i===n-1;
+    try{history.replaceState(null,'','#s'+(i+1))}catch(e){}}
   prev.addEventListener('click',function(){show(i-1)});
   next.addEventListener('click',function(){show(i+1)});
-  document.getElementById('viewport').addEventListener('click',function(e){
-    var x=e.clientX/window.innerWidth; if(x>0.6)show(i+1); else if(x<0.4)show(i-1);
-  });
+  document.getElementById('viewport').addEventListener('click',function(e){var x=e.clientX/window.innerWidth;if(x>0.6)show(i+1);else if(x<0.4)show(i-1)});
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1)}
     else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1)}
-    else if(e.key==='Home')show(0); else if(e.key==='End')show(n-1);
-  });
+    else if(e.key==='Home')show(0);else if(e.key==='End')show(n-1)});
   var x0=null,y0=null,vp=document.getElementById('viewport');
   vp.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
   vp.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
